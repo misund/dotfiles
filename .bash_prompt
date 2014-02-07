@@ -53,6 +53,13 @@ function git_info() {
 # Only show username/host if not default
 function usernamehost() {
 	if [ $USER == $default_username ]; then 
+		echo "$HOSTNAME in ";
+	else
+		echo "$USER@$HOSTNAME in ";
+	fi
+}
+function usernamehost_color() {
+	if [ $USER == $default_username ]; then 
 		echo "\[${ORANGE}\]$HOSTNAME \[${WHITE}\]in ";
 	else
 		echo "\[${MAGENTA}\]$USER\[${WHITE}\]@\[${ORANGE}\]$HOSTNAME \[${WHITE}\]in ";
@@ -78,14 +85,14 @@ function promptchar() {
 # in the iterm tab
 # \[\e]1;\]$(basename $(dirname $PWD))/\W\[\a\]
 
-# PS1="\[\e]2;$PWD\[\a\]\[\e]1;\]\[$(basename "$(dirname "$PWD")")\]/\W\[\a\]${BOLD}\[\$(usernamehost)\]\[$GREEN\]\w\$(git_info)\[$WHITE\] \$ \[$RESET\]"
-PS1="\[${BOLD}\]$(usernamehost)\[${GREEN}\]\w\$(git_info)\[$WHITE\] $(promptchar) \[$RESET\]"
+PS1="\[${BOLD}\]$(usernamehost_color)\[${GREEN}\]\w\$(git_info)\[$WHITE\] $(promptchar) \[$RESET\]"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*|gnome*|xfce*)
     #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)} $(usernamehost) \w\a\]$PS1"
     ;;
 *)
     ;;
