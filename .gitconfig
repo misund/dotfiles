@@ -1,5 +1,13 @@
+[user]
+	name = misund
+	email = thomas@hemmeligadresse.com
+[push]
+	default = simple
+
 [alias]
 	c = commit -am
+	up = pull
+	p = push
 	s = status -s
 	df = diff --color --color-words --abbrev
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
@@ -8,6 +16,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
+	editor = vim
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -23,8 +32,6 @@
 	untracked = cyan
 [merge]
 	log = true
-[push]
-	default = simple
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
@@ -37,6 +44,7 @@
 	pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
-[user]
-	name = Robert Kolner
-	email = robert.kolner@gmail.com
+
+# http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
+[url "git@git.neuf.no:"]
+  insteadOf = "git://git.neuf.no/"
