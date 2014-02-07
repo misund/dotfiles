@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Installing dotfiles. Your old files WILL be overridden. Sorry."
+echo "Installing dotfiles. Your old files WILL be deleted. Sorry."
 
 # Get the directory of this script
 SOURCE="${BASH_SOURCE[0]}"
@@ -18,6 +18,7 @@ rm ~/.bash_aliases
 rm ~/.gitconfig
 rm ~/.gitignore
 rm ~/.vimrc
+rm ~/.ssh/config
 
 # Symlink files in this repo 
 ln -s $DIR/.bashrc ~/.bashrc
@@ -26,6 +27,8 @@ ln -s $DIR/.bash_aliases ~/.bash_aliases
 ln -s $DIR/.gitconfig ~/.gitconfig
 ln -s $DIR/.gitignore ~/.gitignore
 ln -s $DIR/.vimrc ~/.vimrc
+mkdir -p ~/.ssh
+ln -s $DIR/.ssh/config ~/.ssh/config
 
 # Would you like to ue copies instead?
 # cp $DIR/.bash_prompt ~
