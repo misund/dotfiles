@@ -2,6 +2,7 @@
 # Shamelessly copied from https://github.com/paulirish/dotmaster/master/bash_prompt
 
 default_username='misund'
+default_hostname='terpsichore'
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
@@ -14,7 +15,8 @@ if tput setaf 1 &> /dev/null; then
 	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
 		MAGENTA=$(tput setaf 9)
 		ORANGE=$(tput setaf 172)
-		GREEN=$(tput setaf 190)
+		YELLOW=$(tput setaf 190)
+		GREEN=$(tput setaf 2)
 		PURPLE=$(tput setaf 141)
 		WHITE=$(tput setaf 255)
 	else
@@ -59,10 +61,16 @@ function usernamehost() {
 	fi
 }
 function usernamehost_color() {
-	if [ $USER == $default_username ]; then 
-		echo "\[${ORANGE}\]$HOSTNAME \[${WHITE}\]in ";
+	if [ $HOSTNAME == $default_hostname ]; then 
+		local hostcolor=$GREEN
 	else
-		echo "\[${MAGENTA}\]$USER\[${WHITE}\]@\[${ORANGE}\]$HOSTNAME \[${WHITE}\]in ";
+		local hostcolor=$ORANGE
+	fi
+	
+	if [ $USER == $default_username ]; then 
+		echo "\[${hostcolor}\]$HOSTNAME \[${WHITE}\]in ";
+	else
+		echo "\[${MAGENTA}\]$USER\[${WHITE}\]@\[${hostcolor}\]$HOSTNAME \[${WHITE}\]in ";
 	fi
 }
 
@@ -85,7 +93,7 @@ function promptchar() {
 # in the iterm tab
 # \[\e]1;\]$(basename $(dirname $PWD))/\W\[\a\]
 
-PS1="\[${BOLD}\]$(usernamehost_color)\[${GREEN}\]\w\$(git_info)\[$WHITE\] $(promptchar) \[$RESET\]"
+PS1="\[${BOLD}\]$(usernamehost_color)\[${YELLOW}\]\w\$(git_info)\[$WHITE\] $(promptchar) \[$RESET\]"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in

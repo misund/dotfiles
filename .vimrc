@@ -37,7 +37,8 @@ set ignorecase      " ignore case when searching ...
 set smartcase       " ... except when the search term specifically contains uppercase
 
 " colors
-colorsche desert    " best color schemes: peachpuff, default, elflord, desert
+"colorsche desert    " best color schemes: peachpuff, default, elflord, desert
+colorsche misunddesert
 highlight LineNr    ctermfg=darkgrey guifg=darkgrey
 "highlight Comment   ctermfg=darkblue
 "highlight ModeMsg   cterm=NONE ctermfg=white guifg=white
