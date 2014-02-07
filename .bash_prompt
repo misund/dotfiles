@@ -16,7 +16,7 @@ if tput setaf 1 &> /dev/null; then
 		ORANGE=$(tput setaf 172)
 		GREEN=$(tput setaf 190)
 		PURPLE=$(tput setaf 141)
-		WHITE=$(tput setaf 256)
+		WHITE=$(tput setaf 255)
 	else
 		MAGENTA=$(tput setaf 5)
 		ORANGE=$(tput setaf 4)
@@ -52,8 +52,11 @@ function git_info() {
 
 # Only show username/host if not default
 function usernamehost() {
-	#if [ $USER != $default_username ]; then echo "${MAGENTA}$USER${WHITE}@${ORANGE}$HOSTNAME $WHITEin "; fi
-	echo "\[${MAGENTA}\]$USER\[${WHITE}\]@\[${ORANGE}\]$HOSTNAME \[${WHITE}\]in ";
+	if [ $USER == $default_username ]; then 
+		echo "\[${ORANGE}\]$HOSTNAME \[${WHITE}\]in ";
+	else
+		echo "\[${MAGENTA}\]$USER\[${WHITE}\]@\[${ORANGE}\]$HOSTNAME \[${WHITE}\]in ";
+	fi
 }
 
 # iTerm Tab and Title Customization and prompt customization
@@ -68,4 +71,4 @@ function usernamehost() {
 # \[\e]1;\]$(basename $(dirname $PWD))/\W\[\a\]
 
 # PS1="\[\e]2;$PWD\[\a\]\[\e]1;\]\[$(basename "$(dirname "$PWD")")\]/\W\[\a\]${BOLD}\[\$(usernamehost)\]\[$GREEN\]\w\$(git_info)\[$WHITE\] \$ \[$RESET\]"
-PS1="\[${BOLD}\]$(usernamehost)\[${GREEN}\]\w\$(git_info)\[$WHITE\] \$ \[$RESET\]"
+PS1="\[${BOLD}\]$(usernamehost)\[${GREEN}\]\w\$(git_info)\[$WHITE\] \n\$ \[$RESET\]"
