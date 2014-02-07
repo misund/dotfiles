@@ -57,7 +57,7 @@ fi
 unset color_prompt force_color_prompt
 
 # Include separate prompt file
-if [ -f ~./bash_prompt ]; then
+if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
 
