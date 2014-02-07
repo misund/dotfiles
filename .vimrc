@@ -39,11 +39,11 @@ set smartcase       " ... except when the search term specifically contains uppe
 " colors
 "colorsche desert    " best color schemes: peachpuff, default, elflord, desert
 colorsche misunddesert
-highlight LineNr    ctermfg=darkgrey guifg=darkgrey
-"highlight Comment   ctermfg=darkblue
-"highlight ModeMsg   cterm=NONE ctermfg=white guifg=white
-highlight Search    ctermfg=0 ctermbg=3 guifg=Black guibg=Yellow
-highlight Pmenu ctermbg=blue cterm=bold
+highlight LineNr              ctermfg=darkgrey              guifg=darkgrey
+"highlight Comment            ctermfg=darkblue
+"highlight ModeMsg cterm=NONE ctermfg=white                 guifg=white
+"highlight Search             ctermfg=0        ctermbg=3    guifg=Black    guibg=Yellow
+"highlight Pmenu                               ctermbg=blue                              cterm=bold
 
 " indenting
 set autoindent      " auto-indent new lines

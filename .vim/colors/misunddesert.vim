@@ -24,7 +24,7 @@ let g:colors_name="misunddesert"
 hi Normal	guifg=White guibg=grey20 ctermfg=255 ctermbg=235
 
 " highlight groups
-hi Cursor	guibg=khaki guifg=slategrey ctermbg=222
+hi Cursor	guibg=khaki guifg=slategrey ctermbg=221
 "hi CursorIM
 "hi Directory
 "hi DiffAdd
@@ -35,7 +35,7 @@ hi Cursor	guibg=khaki guifg=slategrey ctermbg=222
 hi VertSplit	guibg=#c2bfa5 guifg=grey50 gui=none
 hi Folded	guibg=grey30 guifg=gold
 hi FoldColumn	guibg=grey30 guifg=tan
-hi IncSearch	guifg=slategrey guibg=khaki ctermbg=222
+hi IncSearch	guifg=slategrey guibg=khaki ctermbg=221
 "hi LineNr
 hi ModeMsg	guifg=goldenrod
 hi MoreMsg	guifg=SeaGreen
@@ -47,8 +47,8 @@ hi StatusLine	guibg=#c2bfa5 guifg=black gui=none
 hi StatusLineNC	guibg=#c2bfa5 guifg=grey50 gui=none
 
 " Change 167 to 166?
-hi Title	guifg=indianred ctermfg=167
-hi Visual	gui=none guifg=khaki guibg=olivedrab ctermfg=222
+hi Title	guifg=indianred ctermfg=166
+hi Visual	gui=none guifg=khaki guibg=olivedrab ctermfg=221
 "hi VisualNOS
 hi WarningMsg	guifg=salmon
 "hi WildMenu
@@ -60,8 +60,8 @@ hi WarningMsg	guifg=salmon
 hi Comment	guifg=SkyBlue     ctermfg=116
 hi Constant	guifg=#ffa0a0     ctermfg=217
 hi Identifier	guifg=palegreen   ctermfg=120
-hi Statement	guifg=khaki       ctermfg=222
-hi PreProc	guifg=indianred   ctermfg=167
+hi Statement	guifg=khaki       ctermfg=221
+hi PreProc	guifg=indianred   ctermfg=166
 hi Type		guifg=darkkhaki   ctermfg=143
 hi Special	guifg=navajowhite ctermfg=223
 "hi Underlined
