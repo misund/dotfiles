@@ -19,7 +19,7 @@ rm ~/.vimrc
 rm ~/.gitconfig
 
 # Symlink files in this repo 
-ln -s $DIR/.bash_promt ~/.bash_prompt
+ln -s $DIR/.bash_prompt ~/.bash_prompt
 ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.gitignore ~/.gitignore
 ln -s $DIR/.vimrc ~/.vimrc
