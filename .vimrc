@@ -5,7 +5,7 @@
 " Modified by Thomas Misund (thomas@hemmeligadresse.com / 
 " http://hemmeligadresse.com/).
 
-" call pathogen#infect()
+call pathogen#infect()
 
 filetype indent on
 
