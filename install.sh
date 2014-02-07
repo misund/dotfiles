@@ -2,13 +2,38 @@
 
 echo "Installing dotfiles. Your old files WILL be overridden. Sorry."
 
-# Copy all the files:
-cp .bash_prompt ~/
-cp .bashrc ~/
+# Get the directory of this script
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+# Remove old dotfiles
+rm ~/.bash_prompt
+rm ~/.bashrc
+rm ~/.gitignore
+rm ~/.vimrc
+rm ~/.gitconfig
+
+# Symlink files in this repo 
+ln -s $DIR/.bash_promt ~/.bash_prompt
+ln -s $DIR/.bashrc ~/.bashrc
+ln -s $DIR/.gitignore ~/.gitignore
+ln -s $DIR/.vimrc ~/.vimrc
+ln -s $DIR/.gitconfig ~/.gitconfig
+
+# Would you like to ue copies instead?
+# cp $DIR/.bash_prompt ~
+# cp $DIR/.bashrc ~/
+# cp $DIR/.gitignore ~/
+# cp $DIR/.vimrc ~/
+# cp $DIR/.gitconfig ~/
+
+# source to use our new dotfiles
 source ~/.bashrc
-cp .gitignore ~/
-cp .vimrc ~/
-cp .gitconfig ~/
 
 echo "Setting up ~/.vim directories"
 
