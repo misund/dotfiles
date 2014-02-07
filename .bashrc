@@ -56,6 +56,11 @@ else
 fi
 unset color_prompt force_color_prompt
 
+# Include separate prompt file
+if [ -f ~./bash_prompt ]; then
+    . ~/.bash_prompt
+fi
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
