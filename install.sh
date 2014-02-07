@@ -12,18 +12,20 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # Remove old dotfiles
-rm ~/.bash_prompt
 rm ~/.bashrc
+rm ~/.bash_prompt
+rm ~/.bash_aliases
+rm ~/.gitconfig
 rm ~/.gitignore
 rm ~/.vimrc
-rm ~/.gitconfig
 
 # Symlink files in this repo 
-ln -s $DIR/.bash_prompt ~/.bash_prompt
 ln -s $DIR/.bashrc ~/.bashrc
+ln -s $DIR/.bash_prompt ~/.bash_prompt
+ln -s $DIR/.bash_aliases ~/.bash_aliases
+ln -s $DIR/.gitconfig ~/.gitconfig
 ln -s $DIR/.gitignore ~/.gitignore
 ln -s $DIR/.vimrc ~/.vimrc
-ln -s $DIR/.gitconfig ~/.gitconfig
 
 # Would you like to ue copies instead?
 # cp $DIR/.bash_prompt ~
