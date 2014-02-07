@@ -5,6 +5,7 @@ echo "Installing dotfiles. Your old files WILL be overridden. Sorry."
 # Copy all the files:
 cp .bash_prompt ~/
 cp .bashrc ~/
+source ~/.bashrc
 cp .gitignore ~/
 cp .vimrc ~/
 cp .gitconfig ~/
