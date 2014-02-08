@@ -19,7 +19,7 @@ rm ~/.gitconfig
 rm ~/.gitignore
 rm ~/.vimrc
 rm ~/.ssh/config
-rm -r ~/.vim/colors/
+rm -rf ~/.vim/colors/
 
 # Symlink files in this repo 
 ln -s $DIR/.bashrc ~/.bashrc
