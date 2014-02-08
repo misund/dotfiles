@@ -15,6 +15,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 rm ~/.bashrc
 rm ~/.bash_prompt
 rm ~/.bash_aliases
+rm ~/.bash_profile
 rm ~/.gitconfig
 rm ~/.gitignore
 rm ~/.vimrc
@@ -25,6 +26,7 @@ rm -rf ~/.vim/
 ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.bash_prompt ~/.bash_prompt
 ln -s $DIR/.bash_aliases ~/.bash_aliases
+ln -s $DIR/.bash_profile ~/.bash_profile
 ln -s $DIR/.gitconfig ~/.gitconfig
 ln -s $DIR/.gitignore ~/.gitignore
 ln -s $DIR/.vimrc ~/.vimrc
@@ -32,11 +34,13 @@ mkdir -p ~/.ssh
 ln -s $DIR/.ssh/config ~/.ssh/config
 
 # Would you like to ue copies instead?
-# cp $DIR/.bash_prompt ~
 # cp $DIR/.bashrc ~/
+# cp $DIR/.bash_prompt ~/
+# cp $DIR/.bash_aliases ~/
+# cp $DIR/.bash_profile ~/
 # cp $DIR/.gitignore ~/
-# cp $DIR/.vimrc ~/
 # cp $DIR/.gitconfig ~/
+# cp $DIR/.vimrc ~/
 
 # source to use our new dotfiles
 source ~/.bashrc
@@ -55,5 +59,12 @@ ln -s $DIR/.vim/colors/misunddesert.vim ~/.vim/colors/misunddesert.vim
 
 curl -Sso ~/.vim/autoload/pathogen.vim \
     https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+
+echo "Setting up nvm"
+
+curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+
+source ~/.bash_profile # Reload profile to make sure nvm is go
+nvm install 0.10
 
 echo "Finished!"
