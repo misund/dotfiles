@@ -19,7 +19,7 @@ rm ~/.gitconfig
 rm ~/.gitignore
 rm ~/.vimrc
 rm ~/.ssh/config
-rm -rf ~/.vim/colors/
+rm -rf ~/.vim/
 
 # Symlink files in this repo 
 ln -s $DIR/.bashrc ~/.bashrc
@@ -48,9 +48,10 @@ mkdir -p ~/.vim
 mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/bundle
+mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undo
-ln -s $DIR/.vim/colors ~/.vim/colors
+ln -s $DIR/.vim/colors/misunddesert.vim ~/.vim/colors/misunddesert.vim
 
 curl -Sso ~/.vim/autoload/pathogen.vim \
     https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
