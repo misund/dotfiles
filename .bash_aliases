@@ -38,6 +38,8 @@ alias lock='gnome-screensaver-command --lock'
 
 alias xs='cd'
 alias vf='cd'
+alias clea='clear'
+alias gti='git'
 
 #-------------------------------------------------------------
 # A few fun ones
