@@ -40,6 +40,7 @@ alias xs='cd'
 alias vf='cd'
 alias clea='clear'
 alias gti='git'
+alias cim='vim'
 
 #-------------------------------------------------------------
 # A few fun ones
