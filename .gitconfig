@@ -8,6 +8,7 @@
 	c = commit -am
 	up = pull
 	psuh = push
+	spuh = push
 	p = push
 	s = status -s
 	df = diff --color --color-words --abbrev
