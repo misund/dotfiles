@@ -18,6 +18,7 @@ rm ~/.bash_aliases
 rm ~/.bash_profile
 rm ~/.gitconfig
 rm ~/.gitignore
+rm ~/.npmrc
 rm ~/.vimrc
 rm ~/.ssh/config
 rm -rf ~/.vim/
@@ -29,6 +30,7 @@ ln -s $DIR/.bash_aliases ~/.bash_aliases
 ln -s $DIR/.bash_profile ~/.bash_profile
 ln -s $DIR/.gitconfig ~/.gitconfig
 ln -s $DIR/.gitignore ~/.gitignore
+ln -s $DIR/.npmrc ~/.npmrc
 ln -s $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.ssh
 ln -s $DIR/.ssh/config ~/.ssh/config
