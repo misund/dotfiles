@@ -59,3 +59,7 @@ export CLASSPATH=$CLASSPATH:$HOME/bin/Jena-2.6.4/bin
 # Add RVM to PATH for scripting
 #PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
 PATH=$PATH:$HOME/.rvm/bin
+
+# Add NVM to PATH for scripting
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh && nvm use 0.10 # This loads NVM
+export PATH=$PATH:~/.npm/bin # run node modules' executables (like grunt)
