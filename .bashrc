@@ -62,4 +62,6 @@ PATH=$PATH:$HOME/.rvm/bin
 
 # Add NVM to PATH for scripting
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh && nvm use 0.10 # This loads NVM
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion # Bash completion for NVM
+export NODE_PATH=$NODE_PATH:$HOME/.npm/lib/node_modules # Put NPM root value in node path
 export PATH=$PATH:~/.npm/bin # run node modules' executables (like grunt)
