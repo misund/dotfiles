@@ -46,15 +46,23 @@ highlight LineNr              ctermfg=darkgrey              guifg=darkgrey
 "highlight Pmenu                               ctermbg=blue                              cterm=bold
 
 " indenting
-set autoindent      " auto-indent new lines
-set smartindent     " auto-indent things in braces
-"set expandtab       " away with those pesky tabs
-set noexpandtab     " some say real code deserves real tabs
-set shiftwidth=4    " number of spaces per indent level
-set softtabstop=4   " number of spaces to e.g. delete with backspace
-set cindent         " auto-indent things in braces, loops, conditions, etc.
-set formatoptions+=ro   " keep indenting block comments
-"set tabstop=4       " set tab to four spaces' length (should be avoided)
+set autoindent        " auto-indent new lines
+set smartindent       " auto-indent things in braces
+set cindent           " auto-indent things in braces, loops, conditions, etc.
+set formatoptions+=ro " keep indenting block comments
+
+" Tabs
+" tabstop is the only command here that will affect how existing text displays.
+"set tabstop=8     " how many columns a tab counts for
+"set expandtab     " hitting Tab in insert mode will produce the appropriate number of spaces
+"set noexpandtab   " real code deserves real tabs
+"set shiftwidth=8  " how many columns text is indented with the reindent operations (<< and >>)
+"set softtabstop=8 " number of spaces to e.g. delete with backspace
+
+"set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab " Linux kernel tab style
+"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab " WordPress tab style
+"set softtabstop=4 shiftwidth=4 expandtab             " Java tab style
+set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab  " Real tabs, easily spot broken tabs
 
 " Boilerplate
 abbr psvm public static void main((String[] args) {
