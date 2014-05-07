@@ -59,8 +59,8 @@ mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undo
 ln -s $DIR/.vim/colors/misunddesert.vim ~/.vim/colors/misunddesert.vim
 
-curl -Sso ~/.vim/autoload/pathogen.vim \
-    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+curl -LSso ~/.vim/autoload/pathogen.vim \
+  https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 echo "Setting up nvm"
 
