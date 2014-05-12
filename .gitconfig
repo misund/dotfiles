@@ -11,6 +11,7 @@
 	spuh = push
 	p = push
 	s = status -s
+	statsu = status -s
 	df = diff --color --color-words --abbrev
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [color]
@@ -49,4 +50,5 @@
 
 # http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
 [url "git@git.neuf.no:"]
-  insteadOf = "git://git.neuf.no/"
+	insteadOf = "git://git.neuf.no/"
+	insteadOf = "neuf:"
