@@ -95,6 +95,7 @@ function lowercase()  # move filenames to lowercase
 alias bitch="sudo"
 alias gimmerails="source ~/.rvm/bin/rvm"
 alias mienkofaktura='export FAKTURADB=~/.mienkofaktura/faktura.db && faktura.py'
+alias evil-update='sudo apt-get update && sudo apt-get upgrade --yes && sudo apt-get dist-upgrade --yes && sudo apt-get autoremove --yes'
 
 #-------------------------------------------------------------
 # SSHs I often use...
