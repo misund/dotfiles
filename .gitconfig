@@ -53,3 +53,7 @@
 [url "git@git.neuf.no:"]
 	insteadOf = "git://git.neuf.no/"
 	insteadOf = "neuf:"
+
+[url "git@git.mienko.no:"]
+	insteadOf = "mienko:"
+	insteadOf = "m:"
