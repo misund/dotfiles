@@ -60,11 +60,11 @@ mkdir -p ~/.vim/undo
 ln -s $DIR/.vim/colors/misunddesert.vim ~/.vim/colors/misunddesert.vim
 
 curl -LSso ~/.vim/autoload/pathogen.vim \
-  https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 echo "Setting up nvm"
 
-curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh
 
 source ~/.bash_profile # Reload profile to make sure nvm is go
 nvm install 0.10
