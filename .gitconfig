@@ -6,6 +6,7 @@
 
 [alias]
 	c = commit -am
+	commti = commit
 	up = pull
 	psuh = push
 	spuh = push
