@@ -7,7 +7,7 @@
 
 call pathogen#infect()
 
-filetype indent on
+filetype plugin indent on
 
 " misc
 syntax enable       " enable syntax highlighting
@@ -59,10 +59,11 @@ set formatoptions+=ro " keep indenting block comments
 "set shiftwidth=8  " how many columns text is indented with the reindent operations (<< and >>)
 "set softtabstop=8 " number of spaces to e.g. delete with backspace
 
-"set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab " Linux kernel tab style
-"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab " WordPress tab style
-"set softtabstop=4 shiftwidth=4 expandtab             " Java tab style
-set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab  " Real tabs, easily spot broken tabs
+"set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab        " Linux kernel tab style
+"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab        " WordPress tab style
+"set softtabstop=4 shiftwidth=4 expandtab smarttab           " Java tab style
+"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab " Python tab style
+set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab         " Real tabs, easily spot broken tabs
 
 " Boilerplate
 abbr psvm public static void main((String[] args) {
