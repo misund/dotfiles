@@ -12,8 +12,15 @@
 	spuh = push
 	p = push
 	s = status -s
+	staus = status -s
+	stasus = status -s
+	sttaus = status -s
 	statsu = status -s
 	stasus = status -s
+	statsus = status -s
+	stastus = status -s
+	stsatis = status -s
+	stsatus = status -s
 	df = diff --color --color-words --abbrev
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [color]
