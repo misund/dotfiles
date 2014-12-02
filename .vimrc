@@ -59,11 +59,11 @@ set formatoptions+=ro " keep indenting block comments
 "set shiftwidth=8  " how many columns text is indented with the reindent operations (<< and >>)
 "set softtabstop=8 " number of spaces to e.g. delete with backspace
 
-"set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab        " Linux kernel tab style
-"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab        " WordPress tab style
-"set softtabstop=4 shiftwidth=4 expandtab smarttab           " Java tab style
-"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab " Python tab style
-set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab         " Real tabs, easily spot broken tabs
+"set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab          " Linux kernel tab style
+"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab smarttab " WordPress tab style
+"set softtabstop=4 shiftwidth=4 expandtab smarttab             " Java tab style
+"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab   " Python tab style
+set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab smarttab  " Real tabs, easily spot broken tabs
 
 " Java boilerplate
 abbr psvm public static void main((String[] args) {
@@ -148,6 +148,7 @@ augroup vimrc_filetype
     " Automatically source
     autocmd BufWritePost   ~/.vimrc  :source %
     autocmd BufWritePost   ~/.bashrc :!source %
+
 augroup end
 
 " Uncomment lines with _ (one rule for all languages)
@@ -161,3 +162,5 @@ map _ :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>:nohlsearch<CR>
 autocmd Filetype rst setlocal expandtab
 autocmd Filetype rst setlocal tabstop=3
 autocmd Filetype rst setlocal shiftwidth=3
+
+autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab " Indent js like SOL-Sindre
