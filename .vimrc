@@ -65,9 +65,12 @@ set formatoptions+=ro " keep indenting block comments
 "set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab " Python tab style
 set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab         " Real tabs, easily spot broken tabs
 
-" Boilerplate
+" Java boilerplate
 abbr psvm public static void main((String[] args) {
 abbr sop System.out.println
+
+" React boilerplate
+abbr rcc var = React.createClass({render: function((){return (<Return><BS><Right>;<Down><Down>;<Up><Up><Up><Up><Up>
 
 " keymapping
 " turn line numbers on
