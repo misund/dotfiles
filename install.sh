@@ -54,6 +54,7 @@ mkdir -p ~/.vim
 mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/bundle
+git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node
 mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undo
 ln -s $DIR/.vim/colors ~/.vim/colors
