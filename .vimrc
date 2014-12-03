@@ -106,6 +106,10 @@ inoremap (* (*  *)<Left><Left><Left>
 inoremap {  {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
+inoremap " ""<Left>
+inoremap "" "
+inoremap ' ''<Left>
+inoremap '' '
 au BufRead      if &ft != 'vim' | inoremap " ""<Left>| endif
 
 " HTML entities
