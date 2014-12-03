@@ -54,12 +54,15 @@ mkdir -p ~/.vim
 mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/bundle
-git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node
 mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undo
 ln -s $DIR/.vim/colors ~/.vim/colors
 ln -s $DIR/.vim/ftplugin ~/.vim/ftplugin
 ln -s $DIR/.vim/plugin ~/.vim/plugin
+
+# Get some plugins
+git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node
+git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
 
 curl -LSso ~/.vim/autoload/pathogen.vim \
   https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
