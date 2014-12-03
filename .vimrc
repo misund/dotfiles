@@ -11,6 +11,7 @@ filetype plugin indent on
 
 " misc
 syntax enable       " enable syntax highlighting
+set omnifunc=syntaxcomplete#Complete " Autocompletion?
 set ruler           " show line info
 set laststatus=2    " always show statusbar
 set showcmd         " show partially typed commands
@@ -98,19 +99,6 @@ imap <F8> <C-O>\tc
 nnoremap \ts :set invspell spell?<CR>
 nmap <F9> \ts
 imap <F9> <C-O>\ts
-" Eclipse-like
-inoremap ( ()<Left>
-inoremap (( (
-inoremap () ()
-inoremap (* (*  *)<Left><Left><Left>
-inoremap {  {<CR>}<Esc>O
-inoremap {{ {
-inoremap {} {}
-inoremap " ""<Left>
-inoremap "" "
-inoremap ' ''<Left>
-inoremap '' '
-au BufRead      if &ft != 'vim' | inoremap " ""<Left>| endif
 
 " HTML entities
 au FileType html imap Ø &Oslash;

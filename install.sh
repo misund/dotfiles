@@ -59,6 +59,7 @@ mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undo
 ln -s $DIR/.vim/colors ~/.vim/colors
 ln -s $DIR/.vim/ftplugin ~/.vim/ftplugin
+ln -s $DIR/.vim/plugin ~/.vim/plugin
 
 curl -LSso ~/.vim/autoload/pathogen.vim \
   https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
