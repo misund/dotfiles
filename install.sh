@@ -63,6 +63,7 @@ ln -s $DIR/.vim/plugin ~/.vim/plugin
 # Get some plugins
 git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node
 git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
+git clone https://github.com/editorconfig/editorconfig-vim ~/.vim/bundle/editorconfig-vim
 
 curl -LSso ~/.vim/autoload/pathogen.vim \
   https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
