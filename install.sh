@@ -61,9 +61,10 @@ ln -s $DIR/.vim/ftplugin ~/.vim/ftplugin
 ln -s $DIR/.vim/plugin ~/.vim/plugin
 
 # Get some plugins
-git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node
-git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
-git clone https://github.com/editorconfig/editorconfig-vim ~/.vim/bundle/editorconfig-vim
+git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node                             # Node tools
+git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim                      # Boilerplate shorthands
+git clone https://github.com/editorconfig/editorconfig-vim.git ~/.vim/bundle/editorconfig-vim # Define tab styles per project cross-developers and cross-editors
+git clone https://github.com/wavded/vim-stylus.git ~/.vim/bundle/vim-stylus                   # Syntax highlighting for Stylus
 
 curl -LSso ~/.vim/autoload/pathogen.vim \
   https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
