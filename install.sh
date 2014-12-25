@@ -21,6 +21,7 @@ rm ~/.gitignore
 rm ~/.npmrc
 rm ~/.vimrc
 rm ~/.ssh/config
+rm ~/.ssh/keydir
 rm -rf ~/.vim/
 
 # Symlink files in this repo 
@@ -34,6 +35,7 @@ ln -s $DIR/.npmrc ~/.npmrc
 ln -s $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.ssh
 ln -s $DIR/.ssh/config ~/.ssh/config
+ln -s $DIR/.ssh/keydir ~/.ssh/keydir
 
 # Would you like to ue copies instead?
 # cp $DIR/.bashrc ~/
