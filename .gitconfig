@@ -14,13 +14,18 @@
 	s = status -s
 	staus = status -s
 	stasus = status -s
+	stasau = status -s
 	sttaus = status -s
 	statsu = status -s
+	stasua = status -s
 	stasus = status -s
+	stastu = status -s
+	stsaua = status -s
 	statsus = status -s
 	stastus = status -s
 	stsatis = status -s
 	stsatus = status -s
+	sttatus = status -s
 	df = diff --color --color-words --abbrev
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [color]
