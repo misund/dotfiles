@@ -20,6 +20,7 @@
 	stasua = status -s
 	stasus = status -s
 	stastu = status -s
+	statis = status -s
 	stsaua = status -s
 	statsus = status -s
 	stastus = status -s
