@@ -13,6 +13,7 @@
 	p = push
 	s = status -s
 	staus = status -s
+	stasu = status
 	stasus = status -s
 	stasau = status -s
 	sttaus = status -s
