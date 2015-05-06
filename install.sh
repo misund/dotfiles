@@ -1,6 +1,14 @@
 #!/bin/bash
 
-echo "Installing dotfiles. Your old files WILL be deleted. Sorry."
+echo "This will install shiny dotfiles. Your old dotfiles will be deleted."
+read -p "Continue? [Y/n]:" OKGO
+OKGO=${OKGO:-Y}
+if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+then
+	echo "You were warned. Commencing shininess..."
+else
+	exit
+fi
 
 # Get the directory of this script
 SOURCE="${BASH_SOURCE[0]}"
