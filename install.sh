@@ -37,7 +37,7 @@ mkdir -p ~/.ssh
 ln -s $DIR/.ssh/config ~/.ssh/config
 ln -s $DIR/.ssh/keydir ~/.ssh/keydir
 
-# Would you like to ue copies instead?
+# Would you like to use copies instead?
 # cp $DIR/.bashrc ~/
 # cp $DIR/.bash_prompt ~/
 # cp $DIR/.bash_aliases ~/
@@ -67,6 +67,8 @@ git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node               
 git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim                      # Boilerplate shorthands
 git clone https://github.com/editorconfig/editorconfig-vim.git ~/.vim/bundle/editorconfig-vim # Define tab styles per project cross-developers and cross-editors
 git clone https://github.com/wavded/vim-stylus.git ~/.vim/bundle/vim-stylus                   # Syntax highlighting for Stylus
+git clone https://githubcom/othree/yajs.vim.git ~/.vim/bundle/yajs.vim                        # Syntax highlighting for ES6
+git clone https://github.com/mxw/vim-jsx.git ~/.vim/bundle/vim-jsx                            # Syntax highlighting for JSX
 
 curl -LSso ~/.vim/autoload/pathogen.vim \
   https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
