@@ -24,6 +24,7 @@ rm ~/.bashrc
 rm ~/.bash_prompt
 rm ~/.bash_aliases
 rm ~/.bash_profile
+rm ~/.less_colors
 rm ~/.gitconfig
 rm ~/.gitignore
 rm ~/.npmrc
@@ -37,6 +38,7 @@ ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.bash_prompt ~/.bash_prompt
 ln -s $DIR/.bash_aliases ~/.bash_aliases
 ln -s $DIR/.bash_profile ~/.bash_profile
+ln -s $DIR/.less_colors ~/.less_colors
 ln -s $DIR/.gitconfig ~/.gitconfig
 ln -s $DIR/.gitignore ~/.gitignore
 ln -s $DIR/.npmrc ~/.npmrc

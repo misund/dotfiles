@@ -33,6 +33,11 @@ if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
 
+# Define colors in less (man uses less for paging by default)
+if [ -f ~/.less_colors ]; then
+    . ~/.less_colors
+fi
+
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases

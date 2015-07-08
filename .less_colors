@@ -1,0 +1,54 @@
+# This file defines which colors less should use.
+#
+# man uses less for paging by default, meaning that using this file will give
+# you colors in your man pages if you haven't altered the default setup.
+# 
+# See http://www.tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
+#
+# Predefined system color codes:
+# 
+# 30 – black
+# 31 – red
+# 32 – green
+# 33 – orange
+# 34 – blue
+# 35 – magenta
+# 36 – cyan
+# 37 – white
+# 
+# Other escape codes include:
+# 
+# 0 – reset/normal
+# 1 – bold
+# 3 – italic/reversed
+# 4 – underlined
+# 5 – blink
+
+# Using the predefined system colors mentioned above, we could define our less
+# colors like this:
+# 
+# export LESS_TERMCAP_mb=$'\E[01;31m' # enter blinking mode – red
+# export LESS_TERMCAP_md=$'\E[01;32m' # enter double-bright mode – bold, green
+# export LESS_TERMCAP_me=$'\E[0m'     # turn off all appearance modes (mb, md, so, us)
+# export LESS_TERMCAP_se=$'\E[0m'     # leave standout mode
+# export LESS_TERMCAP_so=$'\E[01;33m' # enter standout mode – yellow
+# export LESS_TERMCAP_ue=$'\E[0m'     # leave underline mode
+# export LESS_TERMCAP_us=$'\E[04;36m' # enter underline mode – cyan
+
+
+# But we all love RGB, right? FULL CONTROL <3
+#
+# Assuming a 256 color terminal, this will work for you as well:
+# Set foreground color: 38;2;<r>;<g>;<b>
+# Set background color: 48;2;<r>;<g>;<b>
+#
+# See https://projects.kde.org/projects/kde/applications/konsole/repository/revisions/master/entry/doc/user/README.moreColors
+
+
+export LESS_TERMCAP_md=$'\E[01;38;2;250;0;0m'    # enter blinking mode – red
+export LESS_TERMCAP_md=$'\E[01;38;2;70;230;70m'  # enter double-bright mode – bold, green
+export LESS_TERMCAP_so=$'\E[01;38;2;200;125;0m'  # enter standout mode – orange-brown-ish 
+export LESS_TERMCAP_us=$'\E[04;38;2;50;170;200m' # enter underline mode – soft blue 
+export LESS_TERMCAP_se=$'\E[0m' # leave standout mode
+export LESS_TERMCAP_ue=$'\E[0m' # leave underline mode
+export LESS_TERMCAP_me=$'\E[0m' # turn off all appearance modes (mb, md, so, us)
