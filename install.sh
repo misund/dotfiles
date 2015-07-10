@@ -28,6 +28,7 @@ rm ~/.less_colors
 rm ~/.gitconfig
 rm ~/.gitignore
 rm ~/.npmrc
+rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.ssh/config
 rm ~/.ssh/keydir
@@ -42,6 +43,7 @@ ln -s $DIR/.less_colors ~/.less_colors
 ln -s $DIR/.gitconfig ~/.gitconfig
 ln -s $DIR/.gitignore ~/.gitignore
 ln -s $DIR/.npmrc ~/.npmrc
+ln -s $DIR/.tmux.conf ~/.tmux.conf
 ln -s $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.ssh
 ln -s $DIR/.ssh/config ~/.ssh/config
