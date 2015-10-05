@@ -157,3 +157,13 @@ autocmd Filetype rst setlocal shiftwidth=3
 
 autocmd Filetype javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab " Indent js like SOL
 autocmd Filetype stylus     setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab " Indent stylus files like SOL
+
+" Make arrow keys work in insert mode inside tmux
+nnoremap <Esc>A <up>
+nnoremap <Esc>B <down>
+nnoremap <Esc>C <right>
+nnoremap <Esc>D <left>
+inoremap <Esc>A <up>
+inoremap <Esc>B <down>
+inoremap <Esc>C <right>
+inoremap <Esc>D <left>
