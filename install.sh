@@ -26,13 +26,17 @@ rm ~/.bash_aliases
 rm ~/.bash_profile
 rm ~/.less_colors
 rm ~/.gitconfig
-rm ~/.gitignore
 rm ~/.npmrc
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.ssh/config
 rm ~/.ssh/keydir
 rm -rf ~/.vim/
+rm -rf $DIR/bin/git-whoami
+
+# bzr-like command `git whoami`
+mkdir -p $DIR/bin
+git clone https://github.com/petere/git-whoami $DIR/bin/git-whoami
 
 # Symlink files in this repo 
 ln -s $DIR/.bashrc ~/.bashrc
@@ -41,13 +45,14 @@ ln -s $DIR/.bash_aliases ~/.bash_aliases
 ln -s $DIR/.bash_profile ~/.bash_profile
 ln -s $DIR/.less_colors ~/.less_colors
 ln -s $DIR/.gitconfig ~/.gitconfig
-ln -s $DIR/.gitignore ~/.gitignore
 ln -s $DIR/.npmrc ~/.npmrc
 ln -s $DIR/.tmux.conf ~/.tmux.conf
 ln -s $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.ssh
 ln -s $DIR/.ssh/config ~/.ssh/config
 ln -s $DIR/.ssh/keydir ~/.ssh/keydir
+mkdir -p ~/bin
+ln -s $DIR/bin/git-whoami/git-whoami ~/bin/git-whoami 
 
 # Would you like to use copies instead?
 # cp $DIR/.bashrc ~/
@@ -79,7 +84,7 @@ git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node               
 git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim                      # Boilerplate shorthands
 git clone https://github.com/editorconfig/editorconfig-vim.git ~/.vim/bundle/editorconfig-vim # Define tab styles per project cross-developers and cross-editors
 git clone https://github.com/wavded/vim-stylus.git ~/.vim/bundle/vim-stylus                   # Syntax highlighting for Stylus
-git clone https://githubcom/othree/yajs.vim.git ~/.vim/bundle/yajs.vim                        # Syntax highlighting for ES6
+git clone https://github.com/othree/yajs.vim.git ~/.vim/bundle/yajs.vim                       # Syntax highlighting for ES6
 git clone https://github.com/mxw/vim-jsx.git ~/.vim/bundle/vim-jsx                            # Syntax highlighting for JSX
 
 curl -LSso ~/.vim/autoload/pathogen.vim \
