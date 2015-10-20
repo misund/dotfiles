@@ -91,5 +91,6 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh
 
 source ~/.bash_profile # Reload profile to make sure nvm is go
 nvm install stable
+nvm use stable
 
 echo "Finished!"
