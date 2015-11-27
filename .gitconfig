@@ -78,3 +78,7 @@
 [url "git@github.com:soldotno/"]
 	insteadOf = "sol:"
 	insteadOf = "s:"
+
+[url "git@bitbucket.org:allermedia/"]
+	insteadOf = "aller:"
+	insteadOf = "a:"
