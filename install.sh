@@ -90,6 +90,11 @@ git clone https://github.com/mxw/vim-jsx.git ~/.vim/bundle/vim-jsx              
 curl -LSso ~/.vim/autoload/pathogen.vim \
   https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
+echo "Setting up neovim"
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+
 echo "Setting up nvm"
 
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh
