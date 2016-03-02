@@ -16,6 +16,9 @@ alias la='ls -alh'
 alias l='ls -l'
 alias grep='grep --color=auto'
 
+# tmux
+alias tmux='tmux attach || tmux new'
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -54,7 +57,7 @@ function xtitle()      # Adds some text in the terminal frame.
     case "$TERM" in
         *term | rxvt)
             echo -n -e "\033]0;$*\007" ;;
-        *)  
+        *)
             ;;
     esac
 }
