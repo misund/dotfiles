@@ -83,3 +83,5 @@
 [url "git@bitbucket.org:allermedia/"]
 	insteadOf = "aller:"
 	insteadOf = "a:"
+[commit]
+	gpgsign = true
