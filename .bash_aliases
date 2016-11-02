@@ -102,6 +102,7 @@ alias bitch="sudo"
 alias gimmerails="source ~/.rvm/bin/rvm"
 alias mienkofaktura='export FAKTURADB=~/.mienkofaktura/faktura.db && faktura.py'
 alias evil-update='sudo apt-get update && sudo apt-get upgrade --yes && sudo apt-get dist-upgrade --yes && sudo apt-get autoremove --yes'
+alias packaged-node-version="node -pe \"require('./package').engines.node\""
 
 #-------------------------------------------------------------
 # SSHs I often use...
