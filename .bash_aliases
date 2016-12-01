@@ -45,6 +45,7 @@ alias vd='cd'
 alias clea='clear'
 alias claer='clear'
 alias clera='clear'
+alias celar='clear'
 alias gti='git'
 alias cim='vim'
 
