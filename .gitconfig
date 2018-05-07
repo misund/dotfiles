@@ -80,8 +80,11 @@
 	insteadOf = "sol:"
 	insteadOf = "s:"
 
-[url "git@bitbucket.org:allermedia/"]
+[url "git@github.com:dbmedialab/"]
 	insteadOf = "aller:"
 	insteadOf = "a:"
+	insteadOf = "dagbladet:"
+	insteadOf = "dbmedialab:"
+	insteadOf = "db:"
 [commit]
 	gpgsign = true
