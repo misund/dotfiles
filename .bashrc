@@ -43,6 +43,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# NPM script completion, e.g. `npm run clean`
+if [ -f ~/.bash_npm_completion ]; then
+    . ~/.bash_npm_completion
+fi
+
 # Force UTF-8 output
 export LANG=en_US.UTF-8
 

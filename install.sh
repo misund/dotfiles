@@ -23,6 +23,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 rm ~/.bashrc
 rm ~/.bash_prompt
 rm ~/.bash_aliases
+rm ~/.bash_npm_completion
 rm ~/.bash_profile
 rm ~/.less_colors
 rm ~/.gitconfig
@@ -38,10 +39,11 @@ rm -rf $DIR/bin/git-whoami
 mkdir -p $DIR/bin
 git clone https://github.com/petere/git-whoami $DIR/bin/git-whoami
 
-# Symlink files in this repo 
+# Symlink files in this repo
 ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.bash_prompt ~/.bash_prompt
 ln -s $DIR/.bash_aliases ~/.bash_aliases
+ln -s $DIR/.bash_npm_completion ~/.bash_npm_completion
 ln -s $DIR/.bash_profile ~/.bash_profile
 ln -s $DIR/.less_colors ~/.less_colors
 ln -s $DIR/.gitconfig ~/.gitconfig
@@ -52,7 +54,7 @@ mkdir -p ~/.ssh
 ln -s $DIR/.ssh/config ~/.ssh/config
 ln -s $DIR/.ssh/keydir ~/.ssh/keydir
 mkdir -p ~/bin
-ln -s $DIR/bin/git-whoami/git-whoami ~/bin/git-whoami 
+ln -s $DIR/bin/git-whoami/git-whoami ~/bin/git-whoami
 
 # Would you like to use copies instead?
 # cp $DIR/.bashrc ~/
