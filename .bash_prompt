@@ -2,7 +2,7 @@
 # Shamelessly copied from https://github.com/paulirish/dotmaster/master/bash_prompt
 
 default_username='misund'
-default_hostname='terpsichore'
+default_hostname='hades'
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
@@ -54,20 +54,20 @@ function git_info() {
 
 # Only show username/host if not default
 function usernamehost() {
-	if [ $USER == $default_username ]; then 
+	if [ $USER == $default_username ]; then
 		echo "$HOSTNAME in ";
 	else
 		echo "$USER@$HOSTNAME in ";
 	fi
 }
 function usernamehost_color() {
-	if [ $HOSTNAME == $default_hostname ]; then 
+	if [ $HOSTNAME == $default_hostname ]; then
 		local hostcolor=$GREEN
 	else
 		local hostcolor=$ORANGE
 	fi
-	
-	if [ $USER == $default_username ]; then 
+
+	if [ $USER == $default_username ]; then
 		echo "\[${hostcolor}\]$HOSTNAME \[${WHITE}\]in ";
 	else
 		echo "\[${MAGENTA}\]$USER\[${WHITE}\]@\[${hostcolor}\]$HOSTNAME \[${WHITE}\]in ";
