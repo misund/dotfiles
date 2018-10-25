@@ -1,0 +1,33 @@
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/misund/bin/google-cloud-sdk/path.bash.inc' ]; then source '/home/misund/bin/google-cloud-sdk/path.bash.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/misund/bin/google-cloud-sdk/completion.bash.inc' ]; then source '/home/misund/bin/google-cloud-sdk/completion.bash.inc'; fi
+
+# @obliadp's magic kube context configuration thingy
+# Put this in your .bashrc to get rich and famous
+# with no effort what so ever
+function kubecontext() {
+
+  GREEN=$(tput setaf 2)
+  RESET=$(tput sgr0)
+
+  if [[ -n $1 ]]; then
+    kubectl config use-context $1 &> /dev/null
+  fi
+
+  contexts=$(kubectl config get-contexts -o name | sort)
+  current_context=$(kubectl config current-context)
+
+  for c in $contexts; do
+    if [ "$c" = "$current_context" ]; then
+      printf "%s " "${GREEN}[${c}]${RESET}"
+    else
+      printf "%s " $c
+    fi
+  done
+
+  echo
+}
+
+# kubectl completion, pls
+source <(kubectl completion bash)

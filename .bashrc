@@ -33,6 +33,10 @@ if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
 
+if [ -f ~/.bash_kubecontext ]; then
+  . ~/.bash_kubecontext
+fi
+
 # Define colors in less (man uses less for paging by default)
 if [ -f ~/.less_colors ]; then
     . ~/.less_colors

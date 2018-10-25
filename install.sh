@@ -23,6 +23,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 rm ~/.bashrc
 rm ~/.bash_prompt
 rm ~/.bash_aliases
+rm ~/.bash_kubecontext
 rm ~/.bash_npm_completion
 rm ~/.bash_profile
 rm ~/.less_colors
@@ -43,6 +44,7 @@ git clone https://github.com/petere/git-whoami $DIR/bin/git-whoami
 ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.bash_prompt ~/.bash_prompt
 ln -s $DIR/.bash_aliases ~/.bash_aliases
+ln -s $DIR/.bash_kubecontext ~/.bash_kubecontext
 ln -s $DIR/.bash_npm_completion ~/.bash_npm_completion
 ln -s $DIR/.bash_profile ~/.bash_profile
 ln -s $DIR/.less_colors ~/.less_colors
