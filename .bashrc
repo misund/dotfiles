@@ -2,6 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+RED='\033[0;31m'
+NOCOLOR='\033[0m' # No Color
+printf "${RED}<3${NOCOLOR}\n"
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
