@@ -28,6 +28,3 @@ function kubecontext() {
 
   echo
 }
-
-# kubectl completion, pls
-source <(kubectl completion bash)

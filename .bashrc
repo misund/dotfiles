@@ -65,7 +65,7 @@ umask 022
 # Path
 #------------------------------------------------------------
 # kubectl completion, pls
-source <(kubectl completion bash)
+command -v kubectl >/dev/null 2>&1 && { (source <(kubectl completion bash) ) }
 
 # execute files in $HOME/bin
 PATH="$HOME/bin:$PATH"
