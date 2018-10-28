@@ -21,5 +21,8 @@ command -v gdm3 >/dev/null 2>&1 || { sudo apt install gdm3; }
 # Node version manager
 command -v nvm >/dev/null 2>&1 || { curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh; source ~/.bash_profile; nvm install stable; nvm use stable; }
 
+# Silver searcher
+command -v ag >/dev/null 2>&1 || { sudo apt install silversearcher-ag }
+
 # Music player
 command -v spotify >/dev/null 2>&1 || { sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886; echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list; sudo apt update; sudo apt install spotify-client; }
