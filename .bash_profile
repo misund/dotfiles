@@ -5,4 +5,4 @@
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh && nvm alias default stable # This loads NVM
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion # Bash completion for NVM
 
-export PATH=$PATH:`yarn global bin`
+command -v yarn >/dev/null 2>&1 && { ( export PATH=$PATH:`yarn global bin` ) }
