@@ -34,6 +34,8 @@ alias mkdir='mkdir -p'
 
 alias ..='cd ..'
 alias lock='gnome-screensaver-command --lock'
+alias clip='xclip -selection clipboard'
+alias pbcopy='xclip -selection clipboard'
 
 #-------------------------------------------------------------
 # spelling typos - highly personnal and keyboard-dependent :-)
