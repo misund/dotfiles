@@ -3,17 +3,17 @@
 # Transfer data with URL syntax
 command -v curl >/dev/null 2>&1 || { sudo apt install curl; }
 
-# Text editor
+# Version control
 command -v git >/dev/null 2>&1 || { sudo apt install git; }
 
-# Version control
+# Text editor
 command -v vim >/dev/null 2>&1 || { sudo apt install vim; }
 
 # Terminal multiplexer
 command -v tmux >/dev/null 2>&1 || { sudo apt install tmux; }
 
 # Copy to clipboard from command line
-command -v tmux >/dev/null 2>&1 || { sudo apt install xclip; }
+command -v xclip >/dev/null 2>&1 || { sudo apt install xclip; }
 
 # Browser
 command -v chromium >/dev/null 2>&1 || { sudo apt install chromium-browser; }
