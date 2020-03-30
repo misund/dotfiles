@@ -43,5 +43,8 @@ command -v atom >/dev/null 2>&1 && echo "atom has already been installed on this
 # Desktop manager
 command -v gnome-session >/dev/null 2>&1 && echo "gnome-session has already been installed on this system." || { sudo apt install gnome-session; }
 
+# Gnome Tweak Tools
+command -v gnome-tweaks >/dev/null 2>&1 && echo "gnome-tweaks has already been installed on this system." || { sudo apt install gnome-tweaks; }
+
 # Music player
 command -v spotify >/dev/null 2>&1 && echo "spotify has already been installed on this system." || { sudo snap install spotify; }
