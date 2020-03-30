@@ -1,5 +1,8 @@
 # Install my favourite programs on a new and shiny system
 
+# Transfer data with URL syntax
+command -v curl >/dev/null 2>&1 || { sudo apt install curl; }
+
 # Text editor
 command -v git >/dev/null 2>&1 || { sudo apt install git; }
 
