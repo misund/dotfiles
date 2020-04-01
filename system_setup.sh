@@ -38,7 +38,10 @@ fi
 command -v chromium >/dev/null 2>&1 && echo "chromium has already been installed on this system." || { sudo snap install chromium; }
 
 # Integrated development environment (IDE)
-command -v atom >/dev/null 2>&1 && echo "atom has already been installed on this system." || { wget -O atom.deb https://atom.io/download/deb && sudo dpkg --install atom.deb && rm atom.deb; }
+command -v atom >/dev/null 2>&1 && echo "atom has already been installed on this system." || { wget -O atom.deb https://atom.io/download/deb && sudo dpkg --install atom.deb && rm atom.deb; apm install sync-settings; }
+
+# Music player
+command -v spotify >/dev/null 2>&1 && echo "spotify has already been installed on this system." || { sudo snap install spotify; }
 
 # Desktop manager
 command -v gnome-session >/dev/null 2>&1 && echo "gnome-session has already been installed on this system." || { sudo apt install gnome-session; }
@@ -46,5 +49,6 @@ command -v gnome-session >/dev/null 2>&1 && echo "gnome-session has already been
 # Gnome Tweak Tools
 command -v gnome-tweaks >/dev/null 2>&1 && echo "gnome-tweaks has already been installed on this system." || { sudo apt install gnome-tweaks; }
 
-# Music player
-command -v spotify >/dev/null 2>&1 && echo "spotify has already been installed on this system." || { sudo snap install spotify; }
+# Enable dark mode
+echo "Dark mode! Enabling the Adwaita-dark theme"
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
