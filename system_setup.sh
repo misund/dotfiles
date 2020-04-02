@@ -8,6 +8,9 @@ command -v curl >/dev/null 2>&1 && echo "curl has already been installed on this
 # Version control
 command -v git >/dev/null 2>&1 && echo "git has already been installed on this system." || { sudo apt install git; }
 
+# Interactive processes viewer
+command -v htop >/dev/null 2>&1 && echo "htop has already been installed on this system." || { sudo apt install htop; }
+
 # Text editor
 command -v vim >/dev/null 2>&1 && echo "vim has already been installed on this system." || { sudo apt install vim; }
 
