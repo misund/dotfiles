@@ -107,4 +107,10 @@ source ~/.bash_profile # Reload profile to make sure nvm is go
 nvm install stable
 nvm use stable
 
+echo "Setting up bash completion for yarn"
+COMPLETIONS_DIR="${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions"
+rm $COMPLETIONS_DIR/yarn
+mkdir -p ${COMPLETIONS_DIR}
+curl -o "${COMPLETIONS_DIR}/yarn" https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
+
 echo "Finished!"
