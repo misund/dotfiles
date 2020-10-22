@@ -41,7 +41,7 @@ fi
 command -v chromium >/dev/null 2>&1 && echo "chromium has already been installed on this system." || { sudo snap install chromium; }
 
 # Integrated development environment (IDE)
-command -v atom >/dev/null 2>&1 && echo "atom has already been installed on this system." || { wget -O atom.deb https://atom.io/download/deb && sudo dpkg --install atom.deb && rm atom.deb; apm install sync-settings; }
+command -v atom >/dev/null 2>&1 && echo "atom has already been installed on this system." || { wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add - && sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list' && sudo apt update && sudo apt install atom && apm install sync-settings; }
 
 # Music player
 command -v spotify >/dev/null 2>&1 && echo "spotify has already been installed on this system." || { sudo snap install spotify; }
