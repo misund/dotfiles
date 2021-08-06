@@ -86,3 +86,6 @@ PATH=$PATH:$HOME/.rvm/bin
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion # Bash completion for NVM
 export NODE_PATH=$NODE_PATH:$HOME/.npm/lib/node_modules # Put NPM root value in node path
 export PATH=$PATH:~/.npm/bin # run node modules' executables (like grunt)
+
+# Start tmux
+[[ -z "$TMUX" ]] && exec tmux
