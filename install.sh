@@ -99,14 +99,6 @@ mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
 ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
-echo "Setting up nvm"
-
-curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh
-
-source ~/.bash_profile # Reload profile to make sure nvm is go
-nvm install stable
-nvm use stable
-
 echo "Setting up bash completion for yarn"
 COMPLETIONS_DIR="${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions"
 rm $COMPLETIONS_DIR/yarn

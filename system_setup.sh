@@ -24,7 +24,7 @@ command -v ag >/dev/null 2>&1 && echo "ag has already been installed on this sys
 command -v xclip >/dev/null 2>&1 && echo "xclip has already been installed on this system." || { sudo apt install xclip; }
 
 # Node version manager
-[ -d "$NVM_DIR/.git" ] && echo "nvm has already been installed on this system." || { curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh; source ~/.bash_profile; nvm install stable; nvm use stable; }
+[ -d "$NVM_DIR/.git" ] && echo "nvm has already been installed on this system." || { curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash; source ~/.bash_profile; nvm install stable; nvm use stable; }
 
 echo ""
 echo "Would you like to install visual stuffs? This includes heavy things like gnome, spotify, chromium and atom."
