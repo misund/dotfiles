@@ -1,7 +1,7 @@
 [user]
 	name = misund
 	email = thomas@hemmeligadresse.com
-	signingkey = F6E99712919DB454
+	signingkey = A1E87D6F0C8C8EC6
 [push]
 	default = simple
 
@@ -89,8 +89,13 @@
 	insteadOf = "db:"
 [commit]
 	gpgsign = true
+[tag]
+	gpgSign = true
 [gpg]
 	program = gpg
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles
 	driver = npx npm-merge-driver merge %A %O %B %P
+
+[includeIf "gitdir:~/src/coop/"]
+  	path = ~/.gitconfig-coop

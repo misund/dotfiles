@@ -28,6 +28,7 @@ rm ~/.bash_npm_completion
 rm ~/.bash_profile
 rm ~/.less_colors
 rm ~/.gitconfig
+rm ~/.gitconfig-coop
 rm ~/.npmrc
 rm ~/.tmux.conf
 rm ~/.vimrc
@@ -49,6 +50,7 @@ ln -s $DIR/.bash_npm_completion ~/.bash_npm_completion
 ln -s $DIR/.bash_profile ~/.bash_profile
 ln -s $DIR/.less_colors ~/.less_colors
 ln -s $DIR/.gitconfig ~/.gitconfig
+ln -s $DIR/.gitconfig-coop ~/.gitconfig-coop
 ln -s $DIR/.npmrc ~/.npmrc
 ln -s $DIR/.tmux.conf ~/.tmux.conf
 ln -s $DIR/.vimrc ~/.vimrc
