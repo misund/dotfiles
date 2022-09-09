@@ -1,0 +1,6 @@
+[user]
+	email = just.thomas.hiorth.misund@coop.no
+	signingkey = CF582A998407F215
+
+[url "git@github.com:coopnorge/"]
+	insteadOf = "coop:"
