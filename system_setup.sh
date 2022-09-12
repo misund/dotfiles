@@ -45,6 +45,7 @@ else
 		OKGO=${OKGO:-Y}
 		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
 		then
+		 	echo "Installing nvm."
 			curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
 			source ~/.bash_profile;
 			nvm install stable;
@@ -58,6 +59,7 @@ else
 		OKGO=${OKGO:-Y}
 		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
 		then
+			echo "Installing go."
 			GO_VERSION=1.19.1
 			GO_PLATFORM=linux-amd64
 			GO_FILENAME="go${GO_VERSION}.${GO_PLATFORM}.tar.gz"
@@ -68,6 +70,7 @@ else
 			[[ -d /usr/local/go/bin ]] && export PATH=$PATH:/usr/local/go/bin # Also in .bash_profile
 			rm $GO_FILENAME
 			go version
+			go env -w GOBIN=~/bin
 		fi
 	}
 fi
