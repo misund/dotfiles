@@ -99,3 +99,5 @@
 
 [includeIf "gitdir:~/src/coop/"]
   	path = ~/.gitconfig-coop
+[init]
+	defaultBranch = main
