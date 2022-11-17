@@ -4,3 +4,14 @@
 
 [url "git@github.com:coopnorge/"]
 	insteadOf = "coop:"
+	insteadOf = "c:"
+
+[url "git@github.com:coop-scratchpad/"]
+	insteadOf = "coop-scratchpad:"
+	insteadOf = "coop-s:"
+	insteadOf = "cs:"
+
+[url "git@ssh.dev.azure.com:v3/coopnorge/Program%20Digitale%20Coop/"]
+	insteadOf = "coop-azure:"
+	insteadOf = "coop-a:"
+	insteadOf = "ca:"
