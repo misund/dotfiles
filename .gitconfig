@@ -1,9 +1,11 @@
 [user]
 	name = misund
 	email = thomas@hemmeligadresse.com
-	signingkey = A1E87D6F0C8C8EC6
+	signingkey = 05F3649BF79FA0A2
 [push]
 	default = simple
+[init]
+	defaultBranch = main
 
 [alias]
 	c = commit -am
@@ -107,5 +109,3 @@
 
 [includeIf "gitdir:~/src/coop/"]
   	path = ~/.gitconfig-coop
-[init]
-	defaultBranch = main

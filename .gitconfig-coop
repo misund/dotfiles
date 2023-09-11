@@ -1,6 +1,6 @@
 [user]
 	email = just.thomas.hiorth.misund@coop.no
-	signingkey = CF582A998407F215
+	signingkey = 1A5B7478C7FC7CE3
 
 [url "git@github.com:coopnorge/"]
 	insteadOf = "coop:"
@@ -15,3 +15,4 @@
 	insteadOf = "coop-azure:"
 	insteadOf = "coop-a:"
 	insteadOf = "ca:"
+
