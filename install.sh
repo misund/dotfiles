@@ -35,6 +35,7 @@ rm ~/.vimrc
 rm ~/.ssh/config
 rm ~/.ssh/keydir
 rm -rf ~/.vim/
+rm -rf ~/bin/git-whoami
 rm -rf $DIR/bin/git-whoami
 
 # bzr-like command `git whoami`
