@@ -105,8 +105,42 @@ else
 	command -v cheese >/dev/null 2>&1 && echo "cheese already exists." || { sudo snap install cheese --candidate; }
 fi
 
-
 echo
+read -p "Install rootless docker? [y/N]:" OKGO
+OKGO=${OKGO:-N}
+if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+then
+	echo "Not installing docker."
+else
+	echo "Checking docker prerequisites..."
+	command -v newuidmap >/dev/null 2>&1 && echo "uidmap is already installed." || { sudo apt install -y uidmap; }
+	command -v dbus-user-session >/dev/null 2>&1 && echo "dbus-user-session is already installed." || { sudo apt install -y dbus-user-session; }
+
+	echo "Disabling system-wide docker daemon..."
+	sudo systemctl disable --now docker.service docker.socket
+
+	echo "Removing any conflicting unofficial packages..."
+	for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+	
+	# Add Docker's official GPG key:
+	sudo install -m 0755 -d /etc/apt/keyrings
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+	sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+	# Add the Docker repository to Apt sources:
+	echo \
+		"deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+		"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+	sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	sudo apt-get update
+
+	echo "Installing docker..."
+	sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+	# Setup rootless docker
+	dockerd-rootless-setuptool.sh install
+fi
+
 # Enable dark mode
 echo "Dark mode! Enabling the Adwaita-dark theme"
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
