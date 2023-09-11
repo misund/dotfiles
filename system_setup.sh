@@ -89,7 +89,7 @@ else
 
 	# Editors
 	command -v atom >/dev/null 2>&1 && echo "atom already exists." || { wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add - && sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list' && sudo apt update && sudo apt install atom && apm install sync-settings; }
-	command -v code >/dev/null 2>&1 && echo "code already exists." || { sudo snap install code; }
+	command -v code >/dev/null 2>&1 && echo "code already exists." || { sudo snap install --classic code; }
 
 	# Communication
 	command -v slack >/dev/null 2>&1 && echo "slack already exists." || { sudo snap install slack; }
