@@ -142,5 +142,6 @@ else
 fi
 
 # Enable dark mode
-echo "Dark mode! Enabling the Adwaita-dark theme"
-gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+echo "Enabling dark mode..."
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-purple-dark'
