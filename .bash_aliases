@@ -15,9 +15,78 @@ alias ll='ls -lh'
 alias la='ls -alh'
 alias l='ls -l'
 alias grep='grep --color=auto'
-
+ 
 # tmux
 alias tmux='tmux attach || tmux new'
+
+_apt_search_installed() {
+    local keyword
+    local verbose=false
+    local installedFlag="\e[32m[Installed]"
+    local configuredFlag="\e[33m[Cfg-files]"
+    local indent="           "
+    local wrap_width=80
+    local cache_output=""
+    local dpkg_output=$(dpkg-query -W -f='${Status} ${Package}\n')
+
+    # Check for -v flag for verbosity
+    if [ "$1" == "-v" ]; then
+        verbose=true
+        keyword="$2"
+    else
+        keyword="$1"
+    fi
+
+    while IFS= read -r line; do
+        local pkg=$(echo "$line" | awk '{print $1}')
+        local short_desc=$(echo "$line" | sed -E "s/^[^ ]+ //")
+        local flag=""
+        
+        cache_output=$(apt-cache show "$pkg" 2>/dev/null)
+
+        # Fetch version
+        local version=$(echo "$cache_output" | grep "Version:" | head -n 1 | awk '{print $2}')
+
+        # Check if the package is installed using the cached dpkg_output
+        if echo "$dpkg_output" | grep --color=always -q "install ok installed $pkg"; then
+            flag=$installedFlag
+        elif echo "$dpkg_output" | grep --color=always -q "deinstall ok config-files $pkg"; then
+            flag=$configuredFlag
+        else
+            flag=$indent
+        fi
+
+        echo -e "$flag \e[36m$pkg\e[0m $version $short_desc"
+
+        # Fetch verbose description if verbose is true
+        if $verbose; then
+            # local verbose_desc=$(echo "$cache_output" | grep -A10 "Description-en:" | tail -n +2 | sed ':a;N;$!ba;s/\n/ /g' | fold -s -w $((wrap_width - ${#indent})))
+            local verbose_desc=$(echo "$cache_output" | grep -A10 "Description-en:" | tail -n +2 )
+            verbose_desc=$(echo "$verbose_desc" | grep -vE "Description-md5:|Task:" | sed 's/  .*$//')
+            # If verbose, display the description on the next line followed by an additional newline
+            if [ ! -z "$verbose_desc" ]; then
+                echo -e "$verbose_desc" | sed "s/^/$indent/"
+                echo ""
+            fi
+        fi
+
+    done < <(apt-cache search "$keyword")
+}
+
+apt() {
+    # If it starts with "apt search" or "apt search -v" and has exactly one argument
+    if [[ "$1" == "search" && ($# -eq 2 || ($# -eq 3 && "$2" == "-v")) ]]; then
+        # Call our custom search function
+        shift
+        _apt_search_installed "$@"
+    else
+        # Call the actual apt command
+        command apt "$@"
+    fi
+}
+
+# Alias to call the function
+alias apt-search='_apt_search_installed'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
