@@ -128,13 +128,13 @@ else
 		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
 		then
 			echo "Installing go."
-			GO_VERSION=1.19.1
+			GO_VERSION=1.21.1
 			GO_PLATFORM=linux-amd64
 			GO_FILENAME="go${GO_VERSION}.${GO_PLATFORM}.tar.gz"
 			GO_DOWNLOAD_LINK="https://go.dev/dl/${GO_FILENAME}"
 
 			curl -O -L $GO_DOWNLOAD_LINK
-			sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.1.linux-amd64.tar.gz
+			sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf ${GO_FILENAME}
 			[[ -d /usr/local/go/bin ]] && export PATH=$PATH:/usr/local/go/bin # Also in .bash_profile
 			rm $GO_FILENAME
 			go version
