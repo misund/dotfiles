@@ -1,5 +1,64 @@
 # Install my favourite programs on a new and shiny system
 
+install_rootless_docker() {
+	echo
+	read -p "Install rootless docker? [y/N]:" OKGO
+	OKGO=${OKGO:-N}
+	if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+	then
+		echo "Not installing docker."
+	else
+		echo "Checking docker prerequisites..."
+		command -v newuidmap >/dev/null 2>&1 && echo "uidmap is already installed." || { sudo apt install -y uidmap; }
+		command -v dbus-user-session >/dev/null 2>&1 && echo "dbus-user-session is already installed." || { sudo apt install -y dbus-user-session; }
+
+		echo "Disabling system-wide docker daemon..."
+		sudo systemctl disable --now docker.service docker.socket
+
+		echo "Removing any conflicting unofficial packages..."
+		for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+		
+		# Add Docker's official GPG key:
+		sudo install -m 0755 -d /etc/apt/keyrings
+		curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+		sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+		# Add the Docker repository to Apt sources:
+		echo \
+			"deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+			"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+		sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+		sudo apt-get update
+
+		echo "Installing docker..."
+		sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+		# Setup rootless docker
+		dockerd-rootless-setuptool.sh install
+	fi
+}
+
+install_terraform() {
+	echo
+	read -p "Install terraform? [y/N]:" OKGO
+	OKGO=${OKGO:-N}
+	if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+	then
+		echo "Not installing terraform."
+	else
+		wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+		echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+		sudo apt update && sudo apt install terraform
+	fi
+}
+
+install_spacectl() {
+	echo "I haven't implemented automated installation of spacectl yet."
+	echo "Installation guide: https://github.com/spacelift-io/spacectl"
+	echo "I have ended up grabbing the latest release from GitHub: https://github.com/spacelift-io/spacectl/releases"
+	read -p "Hit [Enter] to continue": OK
+}
+
 read -p "Install command line tools? [Y/n]:" OKGO
 OKGO=${OKGO:-Y}
 if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
@@ -28,6 +87,15 @@ else
 
 	# Copy to clipboard from command line
 	command -v xclip >/dev/null 2>&1 && echo "xclip already exists." || { sudo apt install xclip; }
+
+	# Run apps in isolated, portable containers
+	command -v docker >/dev/null 2>&1 && echo "docker already exists." || install_rootless_docker
+	
+	# Automate infrastructure provisioning and management using code
+	command -v terraform >/dev/null 2>&1 && echo "terraform already exists." || install_terraform
+
+	# CI/CD for infrastructure as code
+	command -v spacectl >/dev/null 2>&1 && echo "spacectl already exists." || install_spacectl
 fi
 
 echo
@@ -103,42 +171,6 @@ else
 
 	# Selfies
 	command -v cheese >/dev/null 2>&1 && echo "cheese already exists." || { sudo snap install cheese --candidate; }
-fi
-
-echo
-read -p "Install rootless docker? [y/N]:" OKGO
-OKGO=${OKGO:-N}
-if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
-then
-	echo "Not installing docker."
-else
-	echo "Checking docker prerequisites..."
-	command -v newuidmap >/dev/null 2>&1 && echo "uidmap is already installed." || { sudo apt install -y uidmap; }
-	command -v dbus-user-session >/dev/null 2>&1 && echo "dbus-user-session is already installed." || { sudo apt install -y dbus-user-session; }
-
-	echo "Disabling system-wide docker daemon..."
-	sudo systemctl disable --now docker.service docker.socket
-
-	echo "Removing any conflicting unofficial packages..."
-	for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
-	
-	# Add Docker's official GPG key:
-	sudo install -m 0755 -d /etc/apt/keyrings
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-	sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
-	# Add the Docker repository to Apt sources:
-	echo \
-		"deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-		"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-	sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-	sudo apt-get update
-
-	echo "Installing docker..."
-	sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-	# Setup rootless docker
-	dockerd-rootless-setuptool.sh install
 fi
 
 # Enable dark mode
