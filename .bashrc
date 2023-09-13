@@ -36,15 +36,15 @@ fi
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 
-    /* @TODO Properly install starship prompt: */
-    /**
-     - Shallow clone nerd fonts repo and install the Druid Mono font
-     - Set the font in Gnome Terminal Emulator (with gsettings?)
-     - Set the font in VS Code
-     - Install starship
-     - let the command under this comment replace most of what's in .bash_prompt
-     - add .config/starship to dotfiles
-     */
+    # /* @TODO Properly install starship prompt: */
+    # /**
+    #  - Shallow clone nerd fonts repo and install the Druid Mono font
+    #  - Set the font in Gnome Terminal Emulator (with gsettings?)
+    #  - Set the font in VS Code
+    #  - Install starship
+    #  - let the command under this comment replace most of what's in .bash_prompt
+    #  - add .config/starship to dotfiles
+    #  */
 
     command -v starship >/dev/null 2>&1 && eval "$(starship init bash)"
 fi
