@@ -89,3 +89,7 @@ export PATH=$PATH:~/.npm/bin # run node modules' executables (like grunt)
 
 # Start tmux
 [[ -z "$TMUX" ]] && exec tmux
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH

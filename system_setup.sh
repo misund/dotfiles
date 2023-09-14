@@ -59,6 +59,10 @@ install_spacectl() {
 	read -p "Hit [Enter] to continue": OK
 }
 
+install_bun() {
+	curl -fsSL https://bun.sh/install | bash
+}
+
 read -p "Install command line tools? [Y/n]:" OKGO
 OKGO=${OKGO:-Y}
 if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
@@ -139,6 +143,15 @@ else
 			rm $GO_FILENAME
 			go version
 			go env -w GOBIN=~/bin
+		fi
+	}
+
+	command -v bun >/dev/null 2>&1 && echo "bun already exists." || {
+		read -p "Install bun? [Y/n]:" OKGO
+		OKGO=${OKGO:-Y}
+		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+		then
+			install_bun
 		fi
 	}
 fi
