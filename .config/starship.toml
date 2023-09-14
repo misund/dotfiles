@@ -1,2 +1,5 @@
 [hostname]
 ssh_only = false
+
+[[battery.display]]
+threshold = 20
