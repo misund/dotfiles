@@ -34,6 +34,7 @@ rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.ssh/config
 rm ~/.ssh/keydir
+rm ~/.config/tiling-assistant/layouts.json
 rm -rf ~/.vim/
 rm -rf ~/bin/git-whoami
 rm -rf $DIR/bin/git-whoami
@@ -58,6 +59,7 @@ ln -s $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.ssh
 ln -s $DIR/.ssh/config ~/.ssh/config
 ln -s $DIR/.ssh/keydir ~/.ssh/keydir
+ln -s $DIR/.config/tiling-assistant/layouts.json ~/.config/tiling-assistant/layouts.json
 mkdir -p ~/bin
 ln -s $DIR/bin/git-whoami/git-whoami ~/bin/git-whoami
 
