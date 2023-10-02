@@ -87,9 +87,10 @@ PATH=$PATH:$HOME/.rvm/bin
 export NODE_PATH=$NODE_PATH:$HOME/.npm/lib/node_modules # Put NPM root value in node path
 export PATH=$PATH:~/.npm/bin # run node modules' executables (like grunt)
 
-# Start tmux
-[[ -z "$TMUX" ]] && exec tmux
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+# Start tmux
+[[ -z "$TMUX" ]] && exec tmux
+
