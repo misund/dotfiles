@@ -63,6 +63,15 @@ install_bun() {
 	curl -fsSL https://bun.sh/install | bash
 }
 
+install_gh() {
+	command -v curl >/dev/null 2>&1 || (echo "The install function for gh depends on curl. You'll need to install curl first" && return 1)
+	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
+}
+
 read -p "Install command line tools? [Y/n]:" OKGO
 OKGO=${OKGO:-Y}
 if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
@@ -103,6 +112,9 @@ else
 
 	# CI/CD for infrastructure as code
 	command -v spacectl >/dev/null 2>&1 && echo "spacectl already exists." || install_spacectl
+
+	# GitHub CLI
+	command -v gh >/dev/null 2>&1 && echo "gh already exists." || install_gh
 fi
 
 echo
