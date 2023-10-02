@@ -86,6 +86,9 @@ else
 	# Terminal multiplexer
 	command -v tmux >/dev/null 2>&1 && echo "tmux already exists." || { sudo apt install tmux; }
 
+	# Indented directory trees
+	command -v tree >/dev/null 2>&1 && echo "tree already exists." || { sudo apt install tree; }
+
 	# Silver searcher
 	command -v ag >/dev/null 2>&1 && echo "ag already exists." || { sudo apt install silversearcher-ag; }
 
