@@ -1,5 +1,59 @@
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$fossil_branch\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+$hg_branch\
+$pijul_channel\
+$package
+$all\
+"""
+
 [hostname]
 ssh_only = false
+style = 'bold fg:172'
+
+[directory]
+style = 'bold fg:190'
+
+[git_branch]
+style = 'bold fg:141'
+
+[git_status]
+style = 'bold red'
+
+[git_metrics]
+disabled = false
 
 [[battery.display]]
 threshold = 20
+
+[status]
+disabled = true 
+
+[docker_context]
+format = '[via](dimmed) [$symbol$context]($style fg:61 dimmed) '
+
+[bun]
+format = '[via](dimmed) [$symbol($version)]($style dimmed) '
+
+[nodejs]
+format = 'via [$symbol($version)( but $engines_version is required)]($style) '
+detect_files = ['package.json', '.node-version', '!bun.lockb', '!bunfig.toml']
+ 
+[gcloud]
+format = '[on](dimmed) [$symbol$active (\($project\))]($style fg:60 dimmed) '
+
+[memory_usage]
+disabled = false 
+threshold = 85
