@@ -115,6 +115,9 @@ else
 
 	# GitHub CLI
 	command -v gh >/dev/null 2>&1 && echo "gh already exists." || install_gh
+
+	# CLI for Google Cloud Platform products and services
+	command -v gcloud >/dev/null 2>&1 && echo "gcloud already exists." || { sudo snap install google-cloud-cli --classic; }
 fi
 
 echo
