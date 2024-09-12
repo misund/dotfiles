@@ -1,7 +1,7 @@
 [user]
 	name = misund
 	email = thomas@hemmeligadresse.com
-	signingkey = 05F3649BF79FA0A2
+	signingkey = 77E9C2EF456C4860
 [push]
 	default = simple
 [init]
