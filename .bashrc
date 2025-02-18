@@ -74,9 +74,6 @@ command -v kubectl >/dev/null 2>&1 && { (source <(kubectl completion bash) ) }
 # execute files in $HOME/bin
 PATH="$HOME/bin:$PATH"
 
-# Add Jena to Java's CLASSPATH
-export CLASSPATH=$CLASSPATH:$HOME/bin/Jena-2.6.4/bin
-
 # Add RVM to PATH for scripting
 #PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
 PATH=$PATH:$HOME/.rvm/bin
