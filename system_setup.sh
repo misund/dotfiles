@@ -59,6 +59,18 @@ install_spacectl() {
 	read -p "Hit [Enter] to continue": OK
 }
 
+install_if_not_exists() {
+  command -v $1 >/dev/null 2>&1 && echo "$1 already exists."
+  if [ $? -ne 0 ]; then
+    read -p "Install $1? [y/N]: " confirm
+    if [[ $confirm =~ ^[yY]|[yY][eE][sS]$ ]]; then
+      $2
+    else
+      echo "Not installing $1."
+    fi
+  fi
+}
+
 install_bun() {
 	curl -fsSL https://bun.sh/install | bash
 }
@@ -81,43 +93,43 @@ else
 	echo "Installing command line tools..."
 
 	# Transfer data with URL syntax
-	command -v curl >/dev/null 2>&1 && echo "curl already exists." || { sudo apt install curl; }
+	install_if_not_exists "curl" "sudo apt install curl"
 
 	# Version control
-	command -v git >/dev/null 2>&1 && echo "git already exists." || { sudo apt install git; }
+	install_if_not_exists "git" "sudo apt install git"
 
 	# Interactive processes viewer
-	command -v htop >/dev/null 2>&1 && echo "htop already exists." || { sudo apt install htop; }
+	install_if_not_exists "htop" "sudo apt install htop"
 
 	# Text editor
-	command -v vim >/dev/null 2>&1 && echo "vim already exists." || { sudo apt install vim; }
+	install_if_not_exists "vim" "sudo apt install vim"
 
 	# Terminal multiplexer
-	command -v tmux >/dev/null 2>&1 && echo "tmux already exists." || { sudo apt install tmux; }
+	install_if_not_exists "tmux" "sudo apt install tmux"
 
 	# Indented directory trees
-	command -v tree >/dev/null 2>&1 && echo "tree already exists." || { sudo apt install tree; }
+	install_if_not_exists "tree" "sudo apt install tree"
 
 	# Silver searcher
-	command -v ag >/dev/null 2>&1 && echo "ag already exists." || { sudo apt install silversearcher-ag; }
+	install_if_not_exists "ag" "sudo apt install silversearcher-ag"
 
 	# Copy to clipboard from command line
-	command -v xclip >/dev/null 2>&1 && echo "xclip already exists." || { sudo apt install xclip; }
+	install_if_not_exists "xclip" "sudo apt install xclip"
 
 	# Run apps in isolated, portable containers
-	command -v docker >/dev/null 2>&1 && echo "docker already exists." || install_rootless_docker
+	install_if_not_exists "docker" "install_rootless_docker"
 	
 	# Automate infrastructure provisioning and management using code
-	command -v terraform >/dev/null 2>&1 && echo "terraform already exists." || install_terraform
+	install_if_not_exists "terraform" "install_terraform"
 
 	# CI/CD for infrastructure as code
-	command -v spacectl >/dev/null 2>&1 && echo "spacectl already exists." || install_spacectl
+	install_if_not_exists "spacectl" "install_spacectl"
 
 	# GitHub CLI
-	command -v gh >/dev/null 2>&1 && echo "gh already exists." || install_gh
+	install_if_not_exists "gh" "install_gh"
 
 	# CLI for Google Cloud Platform products and services
-	command -v gcloud >/dev/null 2>&1 && echo "gcloud already exists." || { sudo snap install google-cloud-cli --classic; }
+	install_if_not_exists "gcloud" "sudo snap install google-cloud-cli --classic"
 fi
 
 echo
@@ -183,25 +195,25 @@ then
 else
 	echo "Installing visual programs..."
 	# Browsers
-	command -v chromium >/dev/null 2>&1 && echo "chromium already exists." || { sudo snap install chromium; }
-	command -v brave >/dev/null 2>&1 && echo "brave already exists." || { sudo snap install brave; }
+	install_if_not_exists "chromium" "sudo snap install chromium"
+	install_if_not_exists "brave" "sudo snap install brave"
 
 	# Editors
-	command -v code >/dev/null 2>&1 && echo "code already exists." || { sudo snap install --classic code; }
+	install_if_not_exists "code" "sudo snap install --classic code"
 
 	# Communication
-	command -v slack >/dev/null 2>&1 && echo "slack already exists." || { sudo snap install slack; }
+	install_if_not_exists "slack" "sudo snap install slack"
 
 	# Music player
-	command -v spotify >/dev/null 2>&1 && echo "spotify already exists." || { sudo snap install spotify; }
+	install_if_not_exists "spotify" "sudo snap install spotify"
 
 	# Gnome things
-	command -v gnome-session >/dev/null 2>&1 && echo "gnome-session already exists." || { sudo apt install gnome-session; }
-	command -v gnome-tweaks >/dev/null 2>&1 && echo "gnome-tweaks already exists." || { sudo apt install gnome-tweaks; }
-	command -v extension-manager >/dev/null 2>&1 && echo "extension-manager already exists." || { sudo apt install gnome-shell-extension-manager; }
+	install_if_not_exists "gnome-session" "sudo apt install gnome-session"
+	install_if_not_exists "gnome-tweaks" "sudo apt install gnome-tweaks"
+	install_if_not_exists "extension-manager" "sudo apt install gnome-shell-extension-manager"
 
 	# Selfies
-	command -v cheese >/dev/null 2>&1 && echo "cheese already exists." || { sudo snap install cheese --candidate; }
+	install_if_not_exists "cheese" "sudo snap install cheese --candidate"
 fi
 
 # Enable dark mode
