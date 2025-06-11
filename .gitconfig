@@ -106,6 +106,8 @@
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles
 	driver = npx npm-merge-driver merge %A %O %B %P
+[rerere]
+	enabled = true
 
 [includeIf "gitdir:~/src/coop/"]
   	path = ~/.gitconfig-coop
