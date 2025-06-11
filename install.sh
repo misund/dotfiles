@@ -18,6 +18,7 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 
 # Remove old dotfiles
 rm ~/.bashrc
@@ -35,6 +36,7 @@ rm ~/.vimrc
 rm ~/.ssh/config
 rm ~/.ssh/keydir
 rm ~/.config/tiling-assistant/layouts.json
+rm $XDG_CONFIG_HOME/starship.toml
 rm -rf ~/.vim/
 rm -rf ~/bin/git-whoami
 rm -rf $DIR/bin/git-whoami
@@ -57,13 +59,16 @@ ln -s $DIR/.npmrc ~/.npmrc
 ln -s $DIR/.tmux.conf ~/.tmux.conf
 ln -s $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.ssh
-ln -s $DIR/.ssh/config ~/.ssh/config
+# ln -s $DIR/.ssh/config ~/.ssh/config
+cp $DIR/.ssh/config ~/.ssh/config
 ln -s $DIR/.ssh/keydir ~/.ssh/keydir
 ln -s $DIR/.config/tiling-assistant/layouts.json ~/.config/tiling-assistant/layouts.json
+ln -s $DIR/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
 mkdir -p ~/bin
 ln -s $DIR/bin/git-whoami/git-whoami ~/bin/git-whoami
 
 # Would you like to use copies instead?
+# cp $DIR/.ssh/config ~/.ssh/config
 # cp $DIR/.bashrc ~/
 # cp $DIR/.bash_prompt ~/
 # cp $DIR/.bash_aliases ~/
@@ -100,7 +105,6 @@ curl -LSso ~/.vim/autoload/pathogen.vim \
   https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 echo "Setting up neovim"
-mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
 ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 

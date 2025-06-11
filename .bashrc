@@ -35,6 +35,19 @@ fi
 # Prompt and title
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
+
+    # /* @TODO Properly install starship prompt: */
+    # /**
+    #  - [ ] Shallow clone nerd fonts repo and install the Druid Mono font
+    #  - [ ] Set the font in Gnome Terminal Emulator (with gsettings?)
+    #  - [ ] Set the font in VS Code
+    #  - [ ] Install starship
+    #  - [ ] let the command under this comment replace most of what's in .bash_prompt
+    #  - [ ] Consider adding an opprtunity to opt out
+    #  - [x] add .config/starship to dotfiles
+    #  */
+
+    command -v starship >/dev/null 2>&1 && eval "$(starship init bash)"
 fi
 
 if [ -f ~/.bash_kubecontext ]; then
@@ -74,9 +87,6 @@ command -v kubectl >/dev/null 2>&1 && { (source <(kubectl completion bash) ) }
 # execute files in $HOME/bin
 PATH="$HOME/bin:$PATH"
 
-# Add Jena to Java's CLASSPATH
-export CLASSPATH=$CLASSPATH:$HOME/bin/Jena-2.6.4/bin
-
 # Add RVM to PATH for scripting
 #PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
 PATH=$PATH:$HOME/.rvm/bin
@@ -87,9 +97,10 @@ PATH=$PATH:$HOME/.rvm/bin
 export NODE_PATH=$NODE_PATH:$HOME/.npm/lib/node_modules # Put NPM root value in node path
 export PATH=$PATH:~/.npm/bin # run node modules' executables (like grunt)
 
-# Start tmux
-[[ -z "$TMUX" ]] && exec tmux
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+# Start tmux
+[[ -z "$TMUX" ]] && exec tmux
+

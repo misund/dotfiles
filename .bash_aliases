@@ -17,7 +17,13 @@ alias l='ls -l'
 alias grep='grep --color=auto'
  
 # tmux
-alias tmux='tmux attach || tmux new'
+tmux() {
+    if [ $# -eq 0 ]; then
+        command tmux attach || command tmux new-session
+    else
+        command tmux "$@"
+    fi
+}
 
 _apt_search_installed() {
     local keyword

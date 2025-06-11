@@ -75,6 +75,15 @@ install_bun() {
 	curl -fsSL https://bun.sh/install | bash
 }
 
+install_gh() {
+	command -v curl >/dev/null 2>&1 || (echo "The install function for gh depends on curl. You'll need to install curl first" && return 1)
+	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
+}
+
 read -p "Install command line tools? [Y/n]:" OKGO
 OKGO=${OKGO:-Y}
 if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
@@ -98,6 +107,9 @@ else
 	# Terminal multiplexer
 	install_if_not_exists "tmux" "sudo apt install tmux"
 
+	# Indented directory trees
+	install_if_not_exists "tree" "sudo apt install tree"
+
 	# Silver searcher
 	install_if_not_exists "ag" "sudo apt install silversearcher-ag"
 
@@ -112,6 +124,12 @@ else
 
 	# CI/CD for infrastructure as code
 	install_if_not_exists "spacectl" "install_spacectl"
+
+	# GitHub CLI
+	install_if_not_exists "gh" "install_gh"
+
+	# CLI for Google Cloud Platform products and services
+	install_if_not_exists "gcloud" "sudo snap install google-cloud-cli --classic"
 fi
 
 echo
@@ -144,7 +162,7 @@ else
 		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
 		then
 			echo "Installing go."
-			GO_VERSION=1.21.1
+			GO_VERSION=1.24.1
 			GO_PLATFORM=linux-amd64
 			GO_FILENAME="go${GO_VERSION}.${GO_PLATFORM}.tar.gz"
 			GO_DOWNLOAD_LINK="https://go.dev/dl/${GO_FILENAME}"
