@@ -150,7 +150,7 @@ else
 		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
 		then
 			echo "Installing go."
-			GO_VERSION=1.24.0
+			GO_VERSION=1.24.1
 			GO_PLATFORM=linux-amd64
 			GO_FILENAME="go${GO_VERSION}.${GO_PLATFORM}.tar.gz"
 			GO_DOWNLOAD_LINK="https://go.dev/dl/${GO_FILENAME}"
