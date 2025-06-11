@@ -8,13 +8,22 @@
 	defaultBranch = main
 
 [alias]
+	## Short codes
 	c = commit -am
-	commti = commit
-	up = pull
-	psuh = push
-	spuh = push
 	p = push
 	s = status -s
+
+	df = diff --color --color-words --abbrev
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+	# svn is hard to unlearn
+	up = pull
+
+	# my common typos
+	commti = commit
+	psuh = push
+	spuh = push
 	staus = status -s
 	stasu = status
 	stasus = status -s
@@ -31,9 +40,10 @@
 	stsatis = status -s
 	stsatus = status -s
 	sttatus = status -s
-	df = diff --color --color-words --abbrev
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+	# stash options
+	staash = stash --all
+	stush = stash -u
 
 	# Lifted from https://gitlab.com/Gipphe/git-config
 	# Delete any branches that have been merged into master
