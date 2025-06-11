@@ -59,7 +59,8 @@ ln -s $DIR/.npmrc ~/.npmrc
 ln -s $DIR/.tmux.conf ~/.tmux.conf
 ln -s $DIR/.vimrc ~/.vimrc
 mkdir -p ~/.ssh
-ln -s $DIR/.ssh/config ~/.ssh/config
+# ln -s $DIR/.ssh/config ~/.ssh/config
+cp $DIR/.ssh/config ~/.ssh/config
 ln -s $DIR/.ssh/keydir ~/.ssh/keydir
 ln -s $DIR/.config/tiling-assistant/layouts.json ~/.config/tiling-assistant/layouts.json
 ln -s $DIR/.config/starship.toml $XDG_CONFIG_HOME/starship.toml
@@ -67,6 +68,7 @@ mkdir -p ~/bin
 ln -s $DIR/bin/git-whoami/git-whoami ~/bin/git-whoami
 
 # Would you like to use copies instead?
+# cp $DIR/.ssh/config ~/.ssh/config
 # cp $DIR/.bashrc ~/
 # cp $DIR/.bash_prompt ~/
 # cp $DIR/.bash_aliases ~/
