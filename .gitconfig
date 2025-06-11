@@ -120,5 +120,9 @@
 [rerere]
 	enabled = true
 
-[includeIf "gitdir:~/src/coop/"]
+[includeIf "gitdir:~/src/coopnorge/"]
   	path = ~/.gitconfig-coop
+
+[includeIf "gitdir:~/src/coop-scratchpad/"]
+  	path = ~/.gitconfig-coop
+
