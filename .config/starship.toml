@@ -17,6 +17,7 @@ $hg_branch\
 $pijul_channel\
 $package
 $all\
+${custom.tmux}\
 """
 
 [hostname]
@@ -57,3 +58,19 @@ format = '[on](dimmed) [$symbol$active (\($project\))]($style fg:60 dimmed) '
 [memory_usage]
 disabled = false 
 threshold = 85
+
+[custom.tmux]
+# only run inside tmux
+when = """ [ -n "$TMUX" ] """
+# rename tmux window to the repo’s basename; use dirname as fallback
+command = '''
+if top=$(git rev-parse --show-toplevel 2>/dev/null); then
+  name=${top##*/}
+else
+  parent=${PWD%/*}
+  name="${parent##*/}/${PWD##*/}"
+fi
+tmux rename-window "$name"
+'''
+# apparently if you set an empty string as format, the command does not run
+format = "$output"
