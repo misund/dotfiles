@@ -113,6 +113,12 @@ else
 	# Silver searcher
 	install_if_not_exists "ag" "sudo apt install silversearcher-ag"
 
+	# JSON processor
+	install_if_not_exists "jq" "sudo apt install jq"
+
+	# YAML processor
+	install_if_not_exists "yq" "sudo snap install yq"
+
 	# Copy to clipboard from command line
 	install_if_not_exists "xclip" "sudo apt install xclip"
 
