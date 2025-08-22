@@ -163,25 +163,50 @@ else
 	}
 
 	# Golang
-	command -v go >/dev/null 2>&1 && echo "go already exists." || {
-		read -p "Install go? [Y/n]:" OKGO
-		OKGO=${OKGO:-Y}
-		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
-		then
-			echo "Installing go."
-			GO_VERSION=1.25.0
-			GO_PLATFORM=linux-amd64
-			GO_FILENAME="go${GO_VERSION}.${GO_PLATFORM}.tar.gz"
-			GO_DOWNLOAD_LINK="https://go.dev/dl/${GO_FILENAME}"
+	check_go_version_and_install() {
+		# Query latest stable release (array is newest->oldest)
+		local go_releases_json="$(curl -fsSL 'https://go.dev/dl/?mode=json')"
 
-			curl -O -L $GO_DOWNLOAD_LINK
-			sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf ${GO_FILENAME}
-			[[ -d /usr/local/go/bin ]] && export PATH=$PATH:/usr/local/go/bin # Also in .bash_profile
-			rm $GO_FILENAME
-			go version
-			go env -w GOBIN=~/bin
+		# Grab the first stable release (e.g., "go1.25.0")
+		local latest_go_version="$(jq -r '[.[] | select(.stable==true)][0].version' <<< "$go_releases_json")"
+
+		# Detect currently installed Go version (if any)
+		local installed_go_version="none"
+		if command -v go >/dev/null 2>&1; then
+			# Extract just the "go1.x.x" part
+			installed_go_version="$(go version | awk '{print $3}')"
 		fi
+
+		[[ "$installed_go_version" == "$latest_go_version" ]] && echo "go is already at the latest version ($latest_go_version)." || {
+			echo "Installed Go version: $installed_go_version"
+			echo "Latest Go version:    $latest_go_version"
+
+			read -p "Install $latest_go_version? [Y/n]:" OKGO
+			OKGO=${OKGO:-Y}
+			if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+			then
+				echo "Installing go."
+
+				if [[ -z "$latest_go_version" || "$latest_go_version" == "null" ]]; then
+					echo "Could not determine latest Go version."
+					read -p "Manually specify a release (e.g. 'go1.25.0'):" wanted_go_version
+				fi
+
+				GO_PLATFORM=linux-amd64
+				GO_FILENAME="${wanted_go_version:-$latest_go_version}.${GO_PLATFORM}.tar.gz"
+				GO_DOWNLOAD_LINK="https://go.dev/dl/${GO_FILENAME}"
+
+    			echo "Downloading Go from $GO_DOWNLOAD_LINK"
+				curl -O -L $GO_DOWNLOAD_LINK
+				sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf ${GO_FILENAME}
+				[[ -d /usr/local/go/bin ]] && export PATH=$PATH:/usr/local/go/bin # Also in .bash_profile
+				rm $GO_FILENAME
+				go version
+				go env -w GOBIN=~/bin
+			fi
+		}
 	}
+	check_go_version_and_install
 
 	command -v bun >/dev/null 2>&1 && echo "bun already exists." || {
 		read -p "Install bun? [Y/n]:" OKGO
