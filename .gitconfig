@@ -45,6 +45,9 @@
 	staash = stash --all
 	stush = stash -u
 
+	sync = "!git pull && git checkout main && git pull && git checkout - && git rebase main"
+	sync-yarn = "!git pull && git checkout main && git pull && git checkout - && git rebase main; yarn && git add yarn.lock && git rebase --continue"
+
 	# Lifted from https://gitlab.com/Gipphe/git-config
 	# Delete any branches that have been merged into master
 	# See also: https://gist.github.com/robmiller/5133264
