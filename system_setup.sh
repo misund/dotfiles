@@ -248,7 +248,39 @@ else
 	install_if_not_exists "cheese" "sudo snap install cheese --candidate"
 fi
 
-# Enable dark mode
-echo "Enabling dark mode..."
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-purple-dark'
+if command -v gsettings >/dev/null 2>&1; then
+	# Enable dark mode
+	echo "Enabling dark mode..."
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-purple-dark'
+
+	# Terminal: gnome-terminal (default in ubuntu until 25.04)
+	# Set gnome-terminal color scheme to Srcery
+	echo "Setting terminal color scheme to Srcery..."
+	PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
+	PROFILE_PATH="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/"
+
+	gsettings set $PROFILE_PATH use-theme-colors false
+	gsettings set $PROFILE_PATH foreground-color '#fce8c3'
+	gsettings set $PROFILE_PATH background-color '#1c1b19'
+	gsettings set $PROFILE_PATH palette "['#1c1b19', '#ef2f27', '#519f50', '#fbb829', '#2c78bf', '#e02c6d', '#0aaeb3', '#baa67f', '#918175', '#f75341', '#98bc37', '#fed06e', '#68a8e4', '#ff5c8f', '#53fde9', '#fce8c3']"
+fi
+
+# Terminal: ptyxis (default in ubuntu since 25.10)
+#
+# Shortlist for ptyxis themes:
+# - Chameleon
+# - Highway
+# - Google
+# - GNOME
+# - Monokai Soda
+# - Neopolitan
+# - Neutron
+# - Smyck
+# - Spacegray Eighties Dull
+# - Srcery
+#
+# Restore Ptyxis configuration
+if command -v ptyxis >/dev/null 2>&1; then
+    dconf load /org/gnome/Ptyxis/ < $DIR/.config/ptyxis.dconf
+fi
