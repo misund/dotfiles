@@ -41,7 +41,7 @@ fi
 
 # Stow all packages
 echo "Creating symlinks with Stow..."
-stow -v -t ~ bash git vim tmux ssh misc config stow-bin
+stow -v -t ~ -S */
 
 # Setup vim directories and plugins
 echo "Setting up vim directories..."
