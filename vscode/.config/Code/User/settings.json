@@ -1,0 +1,133 @@
+{
+  "[dockercompose]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[typescript]": {},
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  },
+  "chat.tools.terminal.autoApprove": {
+    "git fetch": true,
+    "go mod tidy": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "go tool mage -l": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "npm run lint": true,
+    "npm run test:jest": true,
+    "npm run test:unit": true,
+    "npm test": true
+  },
+  "cSpell.userWords": [
+    "codemod",
+    "Hiorth",
+    "Misund",
+    "preversion",
+    "scaffolder",
+    "techdocs",
+    "Verou",
+    "wcag"
+  ],
+  "debug.console.fontFamily": "'Hack Nerd Font', 'RobotoMono Nerd Font', 'Droid Sans Mono', monospace",
+  "diffEditor.codeLens": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "docker.extension.enableComposeLanguageServer": false,
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports.ts": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.markdownlint": "explicit",
+    "source.formatAll.terraform": "explicit"
+  },
+  "editor.codeLensFontFamily": "'Hack Nerd Font', 'RobotoMono Nerd Font', 'Droid Sans Mono', monospace",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'Hack Nerd Font', 'RobotoMono Nerd Font', 'Droid Sans Mono', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontVariations": true,
+  "editor.fontWeight": "normal",
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [80, 120],
+  "eslint.alwaysShowStatus": true,
+  "eslint.codeActionsOnSave.options": {},
+  "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.enabled": true,
+  "git.openRepositoryInParentFolders": "never",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.selectedCompletionModel": "",
+  "gitlens.advanced.messages": {
+    "suppressIntegrationRequestTimedOutWarning": true
+  },
+  "gitlens.plusFeatures.enabled": false,
+  "go.formatTool": "gofumpt",
+  "go.gopath": "",
+  "go.lintFlags": ["--fix"],
+  "go.lintTool": "golangci-lint",
+  "go.playground": {
+    "run": false
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "go.useLanguageServer": true,
+  "jest.jestCommandLine": "npm run test:jest",
+  "jest.nodeEnv": {
+    "NODE_OPTIONS": "--experimental-vm-modules"
+  },
+  "makefile.configureOnOpen": true,
+  "markdown.extension.preview.autoShowPreviewToSide": true,
+  "markdown.extension.tableFormatter.enabled": false,
+  "markdownlint.config": {},
+  "material-icon-theme.files.associations": {},
+  "redhat.telemetry.enabled": false,
+  "tabnine.experimentalAutoImports": true,
+  "tabnine.receiveBetaChannelUpdates": true,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.enableVisualBell": true,
+  "terminal.integrated.minimumContrastRatio": 1,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 1,
+  "workbench.colorCustomizations": {
+    "[*]": {
+      "terminal.ansiBlack": "#171421",
+      "terminal.ansiBlue": "#12488B",
+      "terminal.ansiBrightBlack": "#5E5C64",
+      "terminal.ansiBrightBlue": "#2A7BDE",
+      "terminal.ansiBrightCyan": "#33C7DE",
+      "terminal.ansiBrightGreen": "#33DA7A",
+      "terminal.ansiBrightMagenta": "#C061CB",
+      "terminal.ansiBrightRed": "#C01C28",
+      "terminal.ansiBrightWhite": "#FFFFFF",
+      "terminal.ansiBrightYellow": "#E9AD0C",
+      "terminal.ansiCyan": "#2AA1B3",
+      "terminal.ansiGreen": "#26A269",
+      "terminal.ansiMagenta": "#A347BA",
+      "terminal.ansiRed": "#A51822",
+      "terminal.ansiWhite": "#D0CFCC",
+      "terminal.ansiYellow": "#A2734C",
+      "terminal.background": "#262626"
+    }
+  },
+  "workbench.colorTheme": "Srcery",
+  "workbench.preferredDarkColorTheme": "Default Dark+",
+  "workbench.preferredLightColorTheme": "Atom One Dark",
+  "workbench.settings.applyToAllProfiles": [],
+  "yaml.format.singleQuote": true
+}
