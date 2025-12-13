@@ -1,6 +1,15 @@
 # Install my favourite programs on a new and shiny system
 set -euo pipefail
 
+# Get the directory of this script
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
 install_rootless_docker() {
 	echo
 	read -p "Install rootless docker? [y/N]:" OKGO
@@ -107,6 +116,9 @@ else
 
 	# Terminal multiplexer
 	install_if_not_exists "tmux" "sudo apt install tmux"
+
+	# Symlink farm manager (for dotfiles)
+	install_if_not_exists "stow" "sudo apt install stow"
 
 	# Indented directory trees
 	install_if_not_exists "tree" "sudo apt install tree"
@@ -251,7 +263,11 @@ fi
 if command -v gsettings >/dev/null 2>&1; then
 	# Enable dark mode
 	echo "Enabling dark mode..."
-	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	
+
+	# Note: color-scheme key is not available in Ubuntu 25.10 / GNOME Shell 49
+	# gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 	gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-purple-dark'
 
 	# Terminal: gnome-terminal (default in ubuntu until 25.04)
@@ -282,5 +298,6 @@ fi
 #
 # Restore Ptyxis configuration
 if command -v ptyxis >/dev/null 2>&1; then
-    dconf load /org/gnome/Ptyxis/ < $DIR/.config/ptyxis.dconf
+	echo "Restoring ptyxis configuration..."
+    dconf load /org/gnome/Ptyxis/ < $DIR/config/.config/ptyxis.dconf
 fi
