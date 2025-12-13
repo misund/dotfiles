@@ -12,7 +12,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -lh'
-alias la='ls -alh'
+alias la='ls -Alh'
 alias l='ls -l'
 alias grep='grep --color=auto'
  
