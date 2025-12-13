@@ -88,6 +88,15 @@ if [[ ! -f "${COMPLETIONS_DIR}/yarn" ]]; then
         https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
 fi
 
+# Install local VS Code extension for dotfiles sync
+if command -v code &> /dev/null; then
+    echo "Installing dotfiles-sync VS Code extension..."
+    VSIX_PATH="$DIR/vscode/.config/Code/User/extensions/dotfiles-sync/build/dotfiles-sync-0.0.1.vsix"
+    if [[ -f "$VSIX_PATH" ]]; then
+        code --install-extension "$VSIX_PATH" --force
+    fi
+fi
+
 echo ""
 echo "✓ Dotfiles installed successfully!"
 echo ""

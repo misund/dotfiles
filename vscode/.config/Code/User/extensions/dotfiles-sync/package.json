@@ -1,0 +1,23 @@
+{
+  "name": "dotfiles-sync",
+  "displayName": "Dotfiles Sync",
+  "description": "Automatically sync VS Code extensions list to dotfiles on shutdown",
+  "version": "0.0.1",
+  "publisher": "misund",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {},
+  "scripts": {
+    "build": "npm run package && npm run install",
+    "package": "vsce package --out build/ --allow-missing-repository --no-yarn",
+    "install": "code --install-extension build/dotfiles-sync-0.0.1.vsix --force"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.7.1"
+  }
+}
