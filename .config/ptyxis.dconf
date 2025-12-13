@@ -1,0 +1,15 @@
+[/]
+default-profile-uuid='2791d2e03cc1fdd4e3c571e26932bc29'
+font-name='Hack Nerd Font 16'
+interface-style='dark'
+profile-uuids=['2791d2e03cc1fdd4e3c571e26932bc29']
+use-system-font=false
+window-size=(uint32 265, uint32 34)
+
+[Profiles/2791d2e03cc1fdd4e3c571e26932bc29]
+opacity=1.0
+palette='Srcery'
+
+[Profiles/ad3a542f7894bcae17d4a3c769316d5f]
+opacity=1.0
+palette='Vs Code'
