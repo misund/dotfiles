@@ -89,6 +89,10 @@ install_fence() {
 	curl -fsSL https://cli.fencesandbox.com/install.sh | sh
 }
 
+install_opencode() {
+	curl -fsSL https://opencode.ai/install | bash
+}
+
 install_gh() {
 	command -v curl >/dev/null 2>&1 || (echo "The install function for gh depends on curl. You'll need to install curl first" && return 1)
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -156,6 +160,9 @@ else
 
 	# Fence sandbox CLI
 	install_if_not_exists "fence" "install_fence"
+
+	# AI coding agent for the terminal
+	install_if_not_exists "opencode" "install_opencode"
 fi
 
 echo
