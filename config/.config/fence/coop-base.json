@@ -1,0 +1,34 @@
+{
+  "extends": "code",
+  "network": {
+    "allowedDomains": [
+      "coopnorge.github.io",
+      "inventory.internal.coop",
+      "mcp.datadoghq.eu",
+      "rfc-editor.org"
+    ]
+  },
+  "filesystem": {
+    "denyRead": [
+      "~/Downloads",
+      "~/Desktop",
+      "~/Documents",
+      "~/Pictures",
+      "~/Videos",
+      "~/Google Drive/**",
+      "~/Library/CloudStorage/**"
+    ]
+  },
+  "macos": {
+    "mach": {
+      "lookup": [
+        "com.apple.pasteboard.1",
+        "com.apple.pbs.fetch_services",
+        "com.apple.coreservices.uasharedpasteboardmanager.xpc",
+        "com.apple.coreservices.uasharedpasteboardaux.xpc",
+        "com.apple.coreservices.uauseractivitypasteboardclient.xpc",
+        "com.apple.coreservices.uasharedpasteboardprogressui.xpc"
+      ]
+    }
+  }
+}
