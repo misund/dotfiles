@@ -85,6 +85,10 @@ install_bun() {
 	curl -fsSL https://bun.sh/install | bash
 }
 
+install_fence() {
+	curl -fsSL https://cli.fencesandbox.com/install.sh | sh
+}
+
 install_gh() {
 	command -v curl >/dev/null 2>&1 || (echo "The install function for gh depends on curl. You'll need to install curl first" && return 1)
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -149,6 +153,9 @@ else
 
 	# CLI for Google Cloud Platform products and services
 	install_if_not_exists "gcloud" "sudo snap install google-cloud-cli --classic"
+
+	# Fence sandbox CLI
+	install_if_not_exists "fence" "install_fence"
 fi
 
 echo
