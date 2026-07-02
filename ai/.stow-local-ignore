@@ -1,0 +1,3 @@
+# Ignore the canonical file itself; only the per-agent symlinks below
+# should be stowed into $HOME.
+^/AGENTS\.md$
