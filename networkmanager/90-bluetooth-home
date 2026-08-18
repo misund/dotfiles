@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# NetworkManager dispatcher: auto-connect Bluetooth device(s) when this machine
+# is on a known home network, identified by the default gateway (router) MAC.
+#
+# Works for both Wi-Fi and Ethernet and ignores foreign networks, even ones
+# that reuse a generic "Wired connection" profile, because the router MAC is
+# unique to the home LAN.
+#
+# Installed to /etc/NetworkManager/dispatcher.d/ by ./install.sh.
+# NetworkManager runs dispatcher scripts as root with:
+#   $1 = interface name, $2 = action
+
+action="$2"
+
+case "$action" in
+	up | dhcp4-change | connectivity-change) ;;
+	*) exit 0 ;;
+esac
+
+# Personal configuration (router MAC allowlist + devices) is kept out of the
+# public repo and loaded from a local, untracked file. See
+# bluetooth-home-connect.conf.example for the format. Do nothing if it is
+# missing or does not define the expected values.
+CONFIG_FILE=/etc/default/bluetooth-home-connect
+[ -r "$CONFIG_FILE" ] || exit 0
+# shellcheck source=/dev/null
+. "$CONFIG_FILE"
+
+[ "${#HOME_GATEWAY_MACS[@]}" -gt 0 ] || exit 0
+[ "${#BT_DEVICES[@]}" -gt 0 ] || exit 0
+
+# Default gateway IP(s).
+mapfile -t gateways < <(ip route show default 2>/dev/null | awk '{print $3}' | sort -u)
+[ "${#gateways[@]}" -eq 0 ] && exit 0
+
+on_home=0
+for gw in "${gateways[@]}"; do
+	# Populate the neighbour cache, then read the gateway's MAC.
+	ping -c1 -W1 "$gw" >/dev/null 2>&1 || true
+	mac=$(ip neigh show "$gw" 2>/dev/null | awk '{print tolower($5)}' | head -n1)
+	[ -z "$mac" ] && continue
+	for allowed in "${HOME_GATEWAY_MACS[@]}"; do
+		if [ "$mac" = "${allowed,,}" ]; then
+			on_home=1
+			break 2
+		fi
+	done
+done
+
+[ "$on_home" -eq 1 ] || exit 0
+
+# Best-effort connect; harmless if already connected or the device is off.
+for dev in "${BT_DEVICES[@]}"; do
+	bluetoothctl connect "$dev" >/dev/null 2>&1 || true
+done
+
+exit 0
