@@ -86,6 +86,9 @@ install_bun() {
 }
 
 install_fence() {
+	# socat is required by Fence's Linux sandbox to bridge network traffic
+	# between the sandboxed process and the host network.
+	install_if_not_exists "socat" "sudo apt install socat"
 	curl -fsSL https://cli.fencesandbox.com/install.sh | sh
 }
 
@@ -314,4 +317,17 @@ fi
 if command -v ptyxis >/dev/null 2>&1; then
 	echo "Restoring ptyxis configuration..."
     dconf load /org/gnome/Ptyxis/ < $DIR/config/.config/ptyxis.dconf
+fi
+
+# NetworkManager dispatcher hooks (e.g. Bluetooth home auto-connect).
+# These are root-owned /etc files, so they are installed here rather than
+# symlinked with stow like the $HOME dotfiles.
+echo
+read -p "Install NetworkManager hooks (Bluetooth home auto-connect)? [y/N]:" OKGO
+OKGO=${OKGO:-N}
+if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+then
+	"$DIR/networkmanager/install.sh"
+else
+	echo "Skipping the NetworkManager hooks."
 fi

@@ -1,0 +1,3 @@
+# Ignore everything in this package so `stow -S */` never symlinks these
+# system files into $HOME. They are installed to /etc by ./install.sh instead.
+.+

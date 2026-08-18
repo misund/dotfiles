@@ -1,0 +1,23 @@
+# Configuration for the 90-bluetooth-home NetworkManager dispatcher hook.
+#
+# Copy this file to bluetooth-home-connect.conf (which is gitignored) and fill
+# in your real values, then run ./install.sh. The installer deploys it to
+# /etc/default/bluetooth-home-connect. Keeping the real values out of the
+# public repo avoids publishing your router's MAC address (which can be used to
+# geolocate your home via Wi-Fi location databases).
+#
+# This file is sourced by bash, so it must be valid bash.
+
+# Allowlist of home router (default gateway) MAC addresses (lowercase).
+# Find yours while connected at home:
+#   gw=$(ip route show default | awk '{print $3}' | head -n1)
+#   ping -c1 "$gw" >/dev/null; ip neigh show "$gw" | awk '{print $5}'
+HOME_GATEWAY_MACS=(
+	"aa:bb:cc:dd:ee:ff"
+)
+
+# Bluetooth devices to auto-connect (MAC  # name). Must already be paired and
+# trusted (bluetoothctl trust <MAC>).
+BT_DEVICES=(
+	"00:11:22:33:44:55" # My Speaker
+)
