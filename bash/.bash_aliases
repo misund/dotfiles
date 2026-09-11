@@ -181,6 +181,7 @@ alias gimmerails="source ~/.rvm/bin/rvm"
 alias mienkofaktura='export FAKTURADB=~/.mienkofaktura/faktura.db && faktura.py'
 alias evil-update='sudo apt-get update && sudo apt-get upgrade --yes && sudo apt-get dist-upgrade --yes && sudo apt-get autoremove --yes && sudo snap refresh'
 alias packaged-node-version="node -pe \"require('./package').engines.node\""
+alias renovate='gh workflow run renovate.yaml'
 
 #-------------------------------------------------------------
 # SSHs I often use...
