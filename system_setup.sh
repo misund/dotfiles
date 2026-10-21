@@ -94,6 +94,23 @@ install_gh() {
 	&& sudo apt install gh -y
 }
 
+install_code() {
+	command -v curl >/dev/null 2>&1 || (echo "The install function for code depends on curl. You'll need to install curl first" && return 1)
+
+	# The snap launcher forces --ozone-platform=x11, which prevents native
+	# Wayland support. Warn (but don't remove it automatically) if it's present.
+	if command -v snap >/dev/null 2>&1 && snap list code >/dev/null 2>&1; then
+		echo "A snap version of VS Code is installed. Its launcher forces --ozone-platform=x11, preventing native Wayland support."
+		echo "Consider removing it yourself with: sudo snap remove code"
+	fi
+
+	curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor --yes -o /usr/share/keyrings/microsoft.gpg \
+	&& sudo chmod go+r /usr/share/keyrings/microsoft.gpg \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install code -y
+}
+
 read -p "Install command line tools? [Y/n]:" OKGO
 OKGO=${OKGO:-Y}
 if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
@@ -243,7 +260,7 @@ else
 	install_if_not_exists "brave" "sudo snap install brave"
 
 	# Editors
-	install_if_not_exists "code" "sudo snap install --classic code"
+	install_if_not_exists "code" "install_code"
 
 	# Communication
 	install_if_not_exists "slack" "sudo snap install slack"
