@@ -134,6 +134,19 @@ install_gcloud() {
 	&& sudo apt install google-cloud-cli -y
 }
 
+install_brave() {
+	command -v curl >/dev/null 2>&1 || (echo "The install function for brave depends on curl. You'll need to install curl first" && return 1)
+
+	if command -v snap >/dev/null 2>&1 && snap list brave >/dev/null 2>&1; then
+		echo "Brave is currently installed via snap. Consider removing it to avoid running two copies: sudo snap remove brave"
+	fi
+
+	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg \
+	&& echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install brave-browser -y
+}
+
 read -p "Install command line tools? [Y/n]:" OKGO
 OKGO=${OKGO:-Y}
 if ! [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
@@ -305,7 +318,7 @@ else
 	echo "Installing visual programs..."
 	# Browsers
 	install_if_not_exists "chromium" "sudo snap install chromium"
-	install_if_not_exists "brave" "sudo snap install brave"
+	install_if_not_exists "brave-browser" "install_brave"
 
 	# Editors
 	install_if_not_exists "code" "install_code"
