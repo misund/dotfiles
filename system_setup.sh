@@ -161,7 +161,7 @@ else
 	echo "Installing programming languages..."
 
 	# Node version manager
-	[ -d "$NVM_DIR/.git" ] && echo "nvm already exists." || {
+	[ -d "${NVM_DIR:-$HOME/.nvm}/.git" ] && echo "nvm already exists." || {
 		read -p "Install nvm? [Y/n]:" OKGO
 		OKGO=${OKGO:-Y}
 		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
