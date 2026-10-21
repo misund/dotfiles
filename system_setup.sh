@@ -91,6 +91,7 @@ install_if_not_exists() {
 install_bun() {
 	# Pin to a known-good release instead of trailing "latest" so the
 	# curl | bash install is reproducible. Bump this when upgrading bun.
+	# renovate: datasource=github-releases depName=oven-sh/bun extractVersion=^bun-v(?<version>.+)$
 	curl -fsSL https://bun.sh/install | bash -s "bun-v1.4.3"
 }
 
@@ -193,6 +194,7 @@ else
 		if [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 		then
 		 	echo "Installing nvm."
+			# renovate: datasource=github-releases depName=nvm-sh/nvm extractVersion=^v(?<version>.+)$
 			curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash;
 			source ~/.bash_profile;
 			nvm install stable;
