@@ -167,7 +167,7 @@ else
 		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
 		then
 		 	echo "Installing nvm."
-			curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
+			curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash;
 			source ~/.bash_profile;
 			nvm install stable;
 			nvm use stable;
