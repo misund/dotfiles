@@ -24,7 +24,7 @@ OKGO=${OKGO:-Y}
 [[ ! $OKGO =~ ^([yY]|[yY][eE][sS])$ ]] && exit 0
 
 # Ensure XDG_CONFIG_HOME is set
-mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
 
 # Check if stow is installed
 if ! command -v stow &> /dev/null; then
@@ -82,12 +82,12 @@ done
 
 # Setup neovim symlinks
 echo "Setting up neovim..."
-mkdir -p $XDG_CONFIG_HOME
-if [[ ! -L $XDG_CONFIG_HOME/nvim && ! -e $XDG_CONFIG_HOME/nvim ]]; then
-    ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+mkdir -p "$XDG_CONFIG_HOME"
+if [[ ! -L "$XDG_CONFIG_HOME"/nvim && ! -e "$XDG_CONFIG_HOME"/nvim ]]; then
+    ln -s ~/.vim "$XDG_CONFIG_HOME"/nvim
 fi
-if [[ ! -L $XDG_CONFIG_HOME/nvim/init.vim && ! -e $XDG_CONFIG_HOME/nvim/init.vim ]]; then
-    ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+if [[ ! -L "$XDG_CONFIG_HOME"/nvim/init.vim && ! -e "$XDG_CONFIG_HOME"/nvim/init.vim ]]; then
+    ln -s ~/.vimrc "$XDG_CONFIG_HOME"/nvim/init.vim
 fi
 
 # Setup bash completion for yarn
