@@ -21,7 +21,7 @@ echo "merge existing files into this repo."
 echo ""
 read -p "Continue? [Y/n]: " OKGO
 OKGO=${OKGO:-Y}
-[[ ! $OKGO =~ ^[yY]|[yY][eE][sS]$ ]] && exit 0
+[[ ! $OKGO =~ ^([yY]|[yY][eE][sS])$ ]] && exit 0
 
 # Ensure XDG_CONFIG_HOME is set
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}

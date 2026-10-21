@@ -14,7 +14,7 @@ install_rootless_docker() {
 	echo
 	read -p "Install rootless docker? [y/N]:" OKGO
 	OKGO=${OKGO:-N}
-	if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+	if ! [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 	then
 		echo "Not installing docker."
 	else
@@ -52,7 +52,7 @@ install_terraform() {
 	echo
 	read -p "Install terraform? [y/N]:" OKGO
 	OKGO=${OKGO:-N}
-	if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+	if ! [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 	then
 		echo "Not installing terraform."
 	else
@@ -73,7 +73,7 @@ install_if_not_exists() {
   command -v $1 >/dev/null 2>&1 && echo "$1 already exists."
   if [ $? -ne 0 ]; then
     read -p "Install $1? [y/N]: " confirm
-    if [[ $confirm =~ ^[yY]|[yY][eE][sS]$ ]]; then
+    if [[ $confirm =~ ^([yY]|[yY][eE][sS])$ ]]; then
       $2
     else
       echo "Not installing $1."
@@ -96,7 +96,7 @@ install_gh() {
 
 read -p "Install command line tools? [Y/n]:" OKGO
 OKGO=${OKGO:-Y}
-if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+if ! [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 then
 	echo "Skipping the command line tools."
 else 
@@ -154,7 +154,7 @@ fi
 echo
 read -p "Install programming languages? [y/N]:" OKGO
 OKGO=${OKGO:-N}
-if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+if ! [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 then
 	echo "Skipping the programming languages."
 else 
@@ -164,7 +164,7 @@ else
 	[ -d "$NVM_DIR/.git" ] && echo "nvm already exists." || {
 		read -p "Install nvm? [Y/n]:" OKGO
 		OKGO=${OKGO:-Y}
-		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+		if [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 		then
 		 	echo "Installing nvm."
 			curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
@@ -195,7 +195,7 @@ else
 
 			read -p "Install $latest_go_version? [Y/n]:" OKGO
 			OKGO=${OKGO:-Y}
-			if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+			if [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 			then
 				echo "Installing go."
 
@@ -223,7 +223,7 @@ else
 	command -v bun >/dev/null 2>&1 && echo "bun already exists." || {
 		read -p "Install bun? [Y/n]:" OKGO
 		OKGO=${OKGO:-Y}
-		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+		if [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 		then
 			install_bun
 		fi
@@ -233,7 +233,7 @@ fi
 echo
 read -p "Install many visual programs? [y/N]:" OKGO
 OKGO=${OKGO:-N}
-if ! [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
+if ! [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
 then
 	echo "Skipping the visual programs."
 else
