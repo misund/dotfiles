@@ -196,7 +196,10 @@ else
 		 	echo "Installing nvm."
 			# renovate: datasource=github-releases depName=nvm-sh/nvm extractVersion=^v(?<version>.+)$
 			curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash;
-			source ~/.bash_profile;
+			export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+			set +u
+			[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+			set -u
 			nvm install stable;
 			nvm use stable;
 		fi
