@@ -48,6 +48,8 @@ echo "Setting up vim directories..."
 mkdir -p ~/.vim/{autoload,backups,bundle,swaps,undo}
 
 # Install Pathogen if not present
+# renovate: datasource=git-refs depName=https://github.com/tpope/vim-pathogen currentValue=master
+# Checksum below is recomputed by .github/workflows/renovate-checksums.yml
 PATHOGEN_COMMIT="ac4dd9494fa9008754e49dff85bff1b5746c89b4"
 PATHOGEN_SHA256="aa5cfa007809596bd55ee1f21f62bd9afa3a29f1c4ac785312ee467b0648180e"
 if [[ ! -f ~/.vim/autoload/pathogen.vim ]]; then
@@ -92,6 +94,8 @@ fi
 echo "Setting up bash completion for yarn..."
 COMPLETIONS_DIR="${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions"
 mkdir -p "${COMPLETIONS_DIR}"
+# renovate: datasource=git-refs depName=https://github.com/dsifford/yarn-completion currentValue=master
+# Checksum below is recomputed by .github/workflows/renovate-checksums.yml
 YARN_COMPLETION_COMMIT="73fe6781037336d210ba25b9dd0e90a335839e58"
 YARN_COMPLETION_SHA256="d98a81b18339ab717a94758fa7e7ebd58404588b510f55f7c141f7d489f19568"
 if [[ ! -f "${COMPLETIONS_DIR}/yarn" ]]; then
