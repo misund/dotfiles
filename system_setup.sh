@@ -224,15 +224,36 @@ else
 					read -p "Manually specify a release (e.g. 'go1.25.0'):" wanted_go_version
 				fi
 
-				GO_PLATFORM=linux-amd64
+				local go_arch
+				case "$(dpkg --print-architecture 2>/dev/null)" in
+					amd64) go_arch=amd64 ;;
+					arm64) go_arch=arm64 ;;
+					armhf) go_arch=armv6l ;;
+					i386) go_arch=386 ;;
+					*)
+						case "$(uname -m)" in
+							x86_64) go_arch=amd64 ;;
+							aarch64|arm64) go_arch=arm64 ;;
+							armv6l|armv7l) go_arch=armv6l ;;
+							i386|i686) go_arch=386 ;;
+							*)
+								echo "Could not determine architecture for Go download."
+								return 1
+								;;
+						esac
+						;;
+				esac
+
+				GO_PLATFORM="linux-${go_arch}"
 				GO_FILENAME="${wanted_go_version:-$latest_go_version}.${GO_PLATFORM}.tar.gz"
 				GO_DOWNLOAD_LINK="https://go.dev/dl/${GO_FILENAME}"
+				GO_TMPDIR="$(mktemp -d)"
 
     			echo "Downloading Go from $GO_DOWNLOAD_LINK"
-				curl -O -L $GO_DOWNLOAD_LINK
-				sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf ${GO_FILENAME}
+				curl -L -o "${GO_TMPDIR}/${GO_FILENAME}" "$GO_DOWNLOAD_LINK"
+				sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf "${GO_TMPDIR}/${GO_FILENAME}"
 				[[ -d /usr/local/go/bin ]] && export PATH=$PATH:/usr/local/go/bin # Also in .bash_profile
-				rm $GO_FILENAME
+				rm -rf "${GO_TMPDIR}"
 				go version
 				go env -w GOBIN=~/bin
 			fi
