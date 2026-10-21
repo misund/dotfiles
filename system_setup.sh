@@ -24,10 +24,16 @@ install_rootless_docker() {
 		command -v dbus-user-session >/dev/null 2>&1 && echo "dbus-user-session is already installed." || { sudo apt install -y dbus-user-session; }
 
 		echo "Disabling system-wide docker daemon..."
-		sudo systemctl disable --now docker.service docker.socket
+		if systemctl list-unit-files --no-legend 'docker.service' 'docker.socket' 2>/dev/null | grep -q .; then
+			sudo systemctl disable --now docker.service docker.socket
+		else
+			echo "docker.service/docker.socket not present; skipping disable step."
+		fi
 
 		echo "Removing any conflicting unofficial packages..."
-		for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+		for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do
+			dpkg -s "$pkg" >/dev/null 2>&1 && sudo apt-get remove -y "$pkg"
+		done
 		
 		# Add Docker's official GPG key:
 		sudo install -m 0755 -d /etc/apt/keyrings
