@@ -272,14 +272,18 @@ if command -v gsettings >/dev/null 2>&1; then
 
 	# Terminal: gnome-terminal (default in ubuntu until 25.04)
 	# Set gnome-terminal color scheme to Srcery
-	echo "Setting terminal color scheme to Srcery..."
-	PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
-	PROFILE_PATH="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/"
+	# Guard: skip on systems where gnome-terminal (and its gsettings schema) is
+	# absent, e.g. Ubuntu 25.10+ where ptyxis is the default terminal.
+	if command -v gnome-terminal >/dev/null 2>&1 && gsettings list-schemas | grep -q '^org.gnome.Terminal.ProfilesList$'; then
+		echo "Setting terminal color scheme to Srcery..."
+		PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
+		PROFILE_PATH="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/"
 
-	gsettings set $PROFILE_PATH use-theme-colors false
-	gsettings set $PROFILE_PATH foreground-color '#fce8c3'
-	gsettings set $PROFILE_PATH background-color '#1c1b19'
-	gsettings set $PROFILE_PATH palette "['#1c1b19', '#ef2f27', '#519f50', '#fbb829', '#2c78bf', '#e02c6d', '#0aaeb3', '#baa67f', '#918175', '#f75341', '#98bc37', '#fed06e', '#68a8e4', '#ff5c8f', '#53fde9', '#fce8c3']"
+		gsettings set $PROFILE_PATH use-theme-colors false
+		gsettings set $PROFILE_PATH foreground-color '#fce8c3'
+		gsettings set $PROFILE_PATH background-color '#1c1b19'
+		gsettings set $PROFILE_PATH palette "['#1c1b19', '#ef2f27', '#519f50', '#fbb829', '#2c78bf', '#e02c6d', '#0aaeb3', '#baa67f', '#918175', '#f75341', '#98bc37', '#fed06e', '#68a8e4', '#ff5c8f', '#53fde9', '#fce8c3']"
+	fi
 fi
 
 # Terminal: ptyxis (default in ubuntu since 25.10)
