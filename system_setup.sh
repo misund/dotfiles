@@ -1,3 +1,4 @@
+#!/bin/bash
 # Install my favourite programs on a new and shiny system
 set -euo pipefail
 
