@@ -77,7 +77,7 @@ install_spacectl() {
 }
 
 install_if_not_exists() {
-  command -v $1 >/dev/null 2>&1 && echo "$1 already exists."
+  command -v "$1" >/dev/null 2>&1 && echo "$1 already exists."
   if [ $? -ne 0 ]; then
     read -p "Install $1? [y/N]: " confirm
     if [[ $confirm =~ ^([yY]|[yY][eE][sS])$ ]]; then
@@ -344,10 +344,10 @@ if command -v gsettings >/dev/null 2>&1; then
 		PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
 		PROFILE_PATH="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/"
 
-		gsettings set $PROFILE_PATH use-theme-colors false
-		gsettings set $PROFILE_PATH foreground-color '#fce8c3'
-		gsettings set $PROFILE_PATH background-color '#1c1b19'
-		gsettings set $PROFILE_PATH palette "['#1c1b19', '#ef2f27', '#519f50', '#fbb829', '#2c78bf', '#e02c6d', '#0aaeb3', '#baa67f', '#918175', '#f75341', '#98bc37', '#fed06e', '#68a8e4', '#ff5c8f', '#53fde9', '#fce8c3']"
+		gsettings set "$PROFILE_PATH" use-theme-colors false
+		gsettings set "$PROFILE_PATH" foreground-color '#fce8c3'
+		gsettings set "$PROFILE_PATH" background-color '#1c1b19'
+		gsettings set "$PROFILE_PATH" palette "['#1c1b19', '#ef2f27', '#519f50', '#fbb829', '#2c78bf', '#e02c6d', '#0aaeb3', '#baa67f', '#918175', '#f75341', '#98bc37', '#fed06e', '#68a8e4', '#ff5c8f', '#53fde9', '#fce8c3']"
 	fi
 fi
 
@@ -368,7 +368,7 @@ fi
 # Restore Ptyxis configuration
 if command -v ptyxis >/dev/null 2>&1; then
 	echo "Restoring ptyxis configuration..."
-    dconf load /org/gnome/Ptyxis/ < $DIR/config/.config/ptyxis.dconf
+    dconf load /org/gnome/Ptyxis/ < "$DIR"/config/.config/ptyxis.dconf
 fi
 
 # NetworkManager dispatcher hooks (e.g. Bluetooth home auto-connect).
