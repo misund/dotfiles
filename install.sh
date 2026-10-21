@@ -56,18 +56,22 @@ fi
 
 # Clone vim plugins if they don't exist
 echo "Installing vim plugins..."
-[[ ! -d ~/.vim/bundle/node ]] && \
-    git clone https://github.com/moll/vim-node.git ~/.vim/bundle/node
-[[ ! -d ~/.vim/bundle/emmet-vim ]] && \
-    git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
-[[ ! -d ~/.vim/bundle/editorconfig-vim ]] && \
-    git clone https://github.com/editorconfig/editorconfig-vim.git ~/.vim/bundle/editorconfig-vim
-[[ ! -d ~/.vim/bundle/vim-stylus ]] && \
-    git clone https://github.com/wavded/vim-stylus.git ~/.vim/bundle/vim-stylus
-[[ ! -d ~/.vim/bundle/yajs.vim ]] && \
-    git clone https://github.com/othree/yajs.vim.git ~/.vim/bundle/yajs.vim
-[[ ! -d ~/.vim/bundle/vim-jsx ]] && \
-    git clone https://github.com/mxw/vim-jsx.git ~/.vim/bundle/vim-jsx
+VIM_PLUGINS=(
+    "moll/vim-node:node"
+    "mattn/emmet-vim"
+    "editorconfig/editorconfig-vim"
+    "wavded/vim-stylus"
+    "othree/yajs.vim"
+    "mxw/vim-jsx"
+)
+for plugin in "${VIM_PLUGINS[@]}"; do
+    repo="${plugin%%:*}"
+    name="${repo##*/}"
+    dir="${plugin#*:}"
+    [[ "$dir" == "$plugin" ]] && dir="$name"
+    target="$HOME/.vim/bundle/$dir"
+    [[ ! -d "$target" ]] && git clone "https://github.com/$repo.git" "$target"
+done
 
 # Setup neovim symlinks
 echo "Setting up neovim..."
