@@ -167,6 +167,7 @@ else
 		if [[ $OKGO =~ ^[yY]|[yY][eE][sS]$ ]]
 		then
 		 	echo "Installing nvm."
+			# renovate: datasource=github-releases depName=nvm-sh/nvm extractVersion=^v(?<version>.+)$
 			curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash;
 			source ~/.bash_profile;
 			nvm install stable;
