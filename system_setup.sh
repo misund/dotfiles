@@ -84,6 +84,7 @@ install_if_not_exists() {
 install_bun() {
 	# Pin to a known-good release instead of trailing "latest" so the
 	# curl | bash install is reproducible. Bump this when upgrading bun.
+	# renovate: datasource=github-releases depName=oven-sh/bun extractVersion=^bun-v(?<version>.+)$
 	curl -fsSL https://bun.sh/install | bash -s "bun-v1.4.3"
 }
 
