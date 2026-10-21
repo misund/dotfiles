@@ -121,6 +121,19 @@ install_code() {
 	&& sudo apt install code -y
 }
 
+install_gcloud() {
+	command -v curl >/dev/null 2>&1 || (echo "The install function for gcloud depends on curl. You'll need to install curl first" && return 1)
+	if command -v snap >/dev/null 2>&1 && snap list google-cloud-cli >/dev/null 2>&1; then
+		echo "google-cloud-cli is also installed as a snap. Consider removing the snap to avoid two parallel installs:"
+		echo "  sudo snap remove google-cloud-cli"
+	fi
+	curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/cloud.google.gpg \
+	&& sudo chmod go+r /usr/share/keyrings/cloud.google.gpg \
+	&& echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install google-cloud-cli -y
+}
+
 read -p "Install command line tools? [Y/n]:" OKGO
 OKGO=${OKGO:-Y}
 if ! [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
@@ -175,7 +188,7 @@ else
 	install_if_not_exists "gh" "install_gh"
 
 	# CLI for Google Cloud Platform products and services
-	install_if_not_exists "gcloud" "sudo snap install google-cloud-cli --classic"
+	install_if_not_exists "gcloud" "install_gcloud"
 fi
 
 echo
