@@ -1,16 +1,34 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "schedule": ["before 6am on monday"],
+  "extends": [
+    "config:recommended"
+  ],
+  "schedule": [
+    "before 6am on monday"
+  ],
   "prConcurrentLimit": 3,
-  "enabledManagers": ["custom.regex"],
+  "enabledManagers": [
+    "custom.regex"
+  ],
   "customManagers": [
     {
       "customType": "regex",
       "description": "Versions annotated with '# renovate: datasource=... depName=...' on the line above",
-      "managerFilePatterns": ["/^system_setup\\.sh$/", "/^install\\.sh$/"],
+      "managerFilePatterns": [
+        "/^system_setup\\.sh$/"
+      ],
       "matchStrings": [
         "# renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+extractVersion=(?<extractVersion>\\S+))?\\s*\\n[^\\n]*?(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ]
+    },
+    {
+      "customType": "regex",
+      "description": "Commit pins annotated with '# renovate: datasource=git-refs depName=<url> currentValue=<branch>'",
+      "managerFilePatterns": [
+        "/^install\\.sh$/"
+      ],
+      "matchStrings": [
+        "# renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s+currentValue=(?<currentValue>\\S+)\\s*\\n(?:#[^\\n]*\\n)*[A-Z_]+_COMMIT=\"(?<currentDigest>[a-f0-9]{40})\""
       ]
     }
   ]
