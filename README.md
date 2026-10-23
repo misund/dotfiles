@@ -16,7 +16,7 @@ Run the two scripts in order on a fresh system:
 ### `system_setup.sh`
 
 Interactively installs command line tools (git, vim, tmux, stow, jq, docker, terraform, gh, gcloud, ...),
-optionally installs programming language toolchains (nvm/node, go, bun), optionally installs GUI apps
+optionally installs programming language toolchains (nvm/node, go, gostyle, bun), optionally installs GUI apps
 (browsers, VS Code, Slack, Spotify, GNOME tweaks, ...) via `apt`/`snap`, and applies some GNOME/terminal
 preferences (dark theme, terminal color scheme, Ptyxis config). Each step prompts before installing
 anything, so it's safe to re-run and skip what you already have.

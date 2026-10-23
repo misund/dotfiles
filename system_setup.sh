@@ -305,6 +305,42 @@ else
 	}
 	check_go_version_and_install
 
+	# gostyle: Go code style checker/fixer used by the coding agents
+	install_gostyle() {
+		if ! command -v go >/dev/null 2>&1; then
+			echo "Skipping gostyle: go is not on PATH."
+			return 0
+		fi
+
+		# Pinned so the install is reproducible. The version is kept without the
+		# leading "v" (the Renovate regex captures plain x.y.z); "v" is added below.
+		# renovate: datasource=go depName=github.com/misund/gostyle extractVersion=^v(?<version>.+)$
+		local gostyle_version="0.1.0"
+
+		local installed_gostyle_version="none"
+		if command -v gostyle >/dev/null 2>&1; then
+			# Prints "gostyle v0.1.0"
+			installed_gostyle_version="$(gostyle -version 2>/dev/null | awk '{print $NF}')"
+			installed_gostyle_version="${installed_gostyle_version#v}"
+		fi
+
+		if [[ "$installed_gostyle_version" == "$gostyle_version" ]]; then
+			echo "gostyle already exists (v${gostyle_version})."
+			return 0
+		fi
+
+		echo "Installed gostyle version: $installed_gostyle_version"
+		echo "Pinned gostyle version:    $gostyle_version"
+		read -p "Install gostyle v${gostyle_version}? [Y/n]:" OKGO
+		OKGO=${OKGO:-Y}
+		if [[ $OKGO =~ ^([yY]|[yY][eE][sS])$ ]]
+		then
+			# Lands in GOBIN (~/bin, set above), or GOPATH/bin if GOBIN is unset
+			go install "github.com/misund/gostyle@v${gostyle_version}"
+		fi
+	}
+	install_gostyle
+
 	command -v bun >/dev/null 2>&1 && echo "bun already exists." || {
 		read -p "Install bun? [Y/n]:" OKGO
 		OKGO=${OKGO:-Y}
