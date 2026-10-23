@@ -16,3 +16,7 @@
 	insteadOf = "coop-a:"
 	insteadOf = "ca:"
 
+
+# Replaces HTTPS with SSH for all Coop's repos (required for Go toolchain)
+[url "ssh://git@github.com/coopnorge"]
+    insteadOf = https://github.com/coopnorge
