@@ -12,6 +12,32 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 cd "$DIR"
 
+install_tmux_plugins() {
+    local plugin_dir="$HOME/.tmux/plugins"
+    local plugins=(
+        "tmux-plugins/tpm"
+        "tmux-plugins/tmux-sensible"
+        "tmux-plugins/tmux-resurrect"
+        "tmux-plugins/tmux-continuum"
+    )
+
+    if ! command -v git >/dev/null 2>&1; then
+        echo "Skipping tmux plugins: git is not installed."
+        return
+    fi
+
+    mkdir -p "$plugin_dir"
+    for plugin in "${plugins[@]}"; do
+        local name="${plugin##*/}"
+        local target="$plugin_dir/$name"
+        if [[ -d "$target/.git" ]]; then
+            echo "$name already exists."
+        else
+            git clone "https://github.com/$plugin" "$target"
+        fi
+    done
+}
+
 echo "Installing dotfiles with GNU Stow..."
 echo "This will create symlinks from your home directory to this dotfiles repo."
 echo ""
@@ -42,6 +68,14 @@ fi
 # Stow all packages
 echo "Creating symlinks with Stow..."
 stow -v -t ~ -S */
+
+# Install tmux plugins after ~/.tmux.conf has been linked
+if command -v tmux >/dev/null 2>&1; then
+    echo "Installing tmux plugins..."
+    install_tmux_plugins
+else
+    echo "Skipping tmux plugins: tmux is not installed."
+fi
 
 # Setup vim directories and plugins
 echo "Setting up vim directories..."
