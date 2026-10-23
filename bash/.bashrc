@@ -101,6 +101,14 @@ export PATH=$PATH:~/.npm/bin # run node modules' executables (like grunt)
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
+# Go private module configuration for Coop repositories
+export GONOPROXY='github.com/coopnorge'
+export GONOSUMDB='github.com/coopnorge'
+export GOPRIVATE='github.com/coopnorge'
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
+
 # Start tmux
 [[ -z "$TMUX" ]] && exec tmux
 
