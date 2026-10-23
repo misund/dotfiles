@@ -1,3 +1,4 @@
-# Ignore the canonical file itself; only the per-agent symlinks below
+# Ignore the canonical files themselves; only the per-agent symlinks below
 # should be stowed into $HOME.
 ^/AGENTS\.md$
+^/commit-style\.md$
