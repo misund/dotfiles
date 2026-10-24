@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Declare associative array
+declare -A colors
+
+# Regular Colors
+colors[black]='\033[0;30m'         # Black
+colors[red]='\033[0;31m'           # Red
+colors[green]='\033[0;32m'         # Green
+colors[yellow]='\033[0;33m'        # Yellow
+colors[blue]='\033[0;34m'          # Blue
+colors[purple]='\033[0;35m'        # Purple
+colors[cyan]='\033[0;36m'          # Cyan
+colors[white]='\033[0;37m'         # White
+
+# Bold Colors
+colors[bright-black]='\033[1;30m'  # Black
+colors[bright-red]='\033[1;31m'    # Red
+colors[bright-green]='\033[1;32m'  # Green
+colors[bright-yellow]='\033[1;33m' # Yellow
+colors[bright-blue]='\033[1;34m'   # Blue
+colors[bright-purple]='\033[1;35m' # Purple
+colors[bright-cyan]='\033[1;36m'   # Cyan
+colors[bright-white]='\033[1;37m'  # White
+
+# Reset
+colors[reset]='\033[0m'            # Text Reset
+
+colors() {
+    local spacer=""
+
+    if [[ $(tput cols) -gt 111 ]]; then
+        spacer="  "
+    elif [[ $(tput cols) -gt 80 ]]; then
+        spacer=" "
+    else
+        spacer=""
+    fi
+
+    local s3="${spacer}${spacer}${spacer}"
+    local s4="${spacer}${spacer}${spacer}${spacer}"
+
+    # Displaying Regular Colors
+    echo -e "${s3} ${colors[black]} Black ${s4}${colors[red]} Red ${s4}${colors[green]} Green${s4}${colors[yellow]} Yellow${s4}${colors[blue]} Blue${s4}${colors[purple]} Purple${s4}${colors[cyan]} Cyan${s4} ${colors[white]}White $Color_Off"
+
+    # Displaying Bold Colors
+    echo -e "${s3} ${colors[bright-black]} Black ${s4}${colors[bright-red]} Red${s4} ${colors[bright-green]} Green${s4}${colors[bright-yellow]} Yellow${s4}${colors[bright-blue]} Blue${s4}${colors[bright-purple]} Purple${s4}${colors[bright-cyan]} Cyan${s4} ${colors[bright-white]}White $Color_Off"
+
+
+    # All 256 colors
+    for i in {0..255}; do
+        # Print color code in a background and foreground color
+        printf "\e[48;5;${i}m\e[38;5;15m${spacer}%03d${spacer}" $i
+        printf "\e[39;5;0m\e[38;5;${i}m${spacer}%03d${spacer}" $i
+
+        # Print newline to separate the color blocks
+        if (( (i + 1) <= 16 )); then
+            (( (i + 1) % 8 == 0 )) && echo -e "\033[0m"
+            (( (i + 1) % 16 == 0 )) && echo -e "\033[0m"
+        else
+            (((i + 1 - 16) % 6 == 0)) && echo -e "\033[0m"
+            (((i + 1 - 16) % 36 == 0)) && echo -e "\033[0m"
+        fi
+    done
+}
