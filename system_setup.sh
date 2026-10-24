@@ -99,6 +99,32 @@ install_fence() {
 	curl -fsSL https://cli.fencesandbox.com/install.sh | sh
 }
 
+install_tmux_plugins() {
+	local plugin_dir="$HOME/.tmux/plugins"
+	local plugins=(
+		"tmux-plugins/tpm"
+		"tmux-plugins/tmux-sensible"
+		"tmux-plugins/tmux-resurrect"
+		"tmux-plugins/tmux-continuum"
+	)
+
+	if ! command -v git >/dev/null 2>&1; then
+		echo "Skipping tmux plugins: git is not installed."
+		return
+	fi
+
+	mkdir -p "$plugin_dir"
+	for plugin in "${plugins[@]}"; do
+		local name="${plugin##*/}"
+		local target="$plugin_dir/$name"
+		if [[ -d "$target/.git" ]]; then
+			echo "$name already exists."
+		else
+			git clone "https://github.com/$plugin" "$target"
+		fi
+	done
+}
+
 install_gh() {
 	command -v curl >/dev/null 2>&1 || { echo "The install function for gh depends on curl. You'll need to install curl first"; return 1; }
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -173,6 +199,7 @@ else
 
 	# Terminal multiplexer
 	install_if_not_exists "tmux" "sudo apt install tmux"
+	install_tmux_plugins
 
 	# Symlink farm manager (for dotfiles)
 	install_if_not_exists "stow" "sudo apt install stow"
