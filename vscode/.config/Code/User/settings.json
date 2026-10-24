@@ -6,22 +6,25 @@
     "editor.quickSuggestions": {
       "comments": false,
       "other": true,
-      "strings": true
+      "strings": true,
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "[github-actions-workflow]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "prettier.prettier-vscode",
   },
   "[go]": {
-    "editor.defaultFormatter": "golang.go"
+    "editor.defaultFormatter": "golang.go",
   },
   "[typescript]": {},
   "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "prettier.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "accessibility.signals.terminalBell": {
-    "sound": "on"
+    "sound": "on",
   },
   "chat.tools.terminal.autoApprove": {
     "git fetch": true,
@@ -36,7 +39,25 @@
     "npm run lint": true,
     "npm run test:jest": true,
     "npm run test:unit": true,
-    "npm test": true
+    "npm test": true,
+    "git stash": true,
+    "git checkout": true,
+    "/^gh issue view /": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^gh pr view /": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^gh pr diff /": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^gh repo list /": {
+      "approve": true,
+      "matchCommandLine": true
+    },
   },
   "cSpell.userWords": [
     "codemod",
@@ -46,7 +67,7 @@
     "scaffolder",
     "techdocs",
     "Verou",
-    "wcag"
+    "wcag",
   ],
   "debug.console.fontFamily": "'Hack Nerd Font', 'RobotoMono Nerd Font', 'Droid Sans Mono', monospace",
   "diffEditor.codeLens": true,
@@ -56,16 +77,16 @@
     "source.addMissingImports.ts": "explicit",
     "source.fixAll.eslint": "explicit",
     "source.fixAll.markdownlint": "explicit",
-    "source.formatAll.terraform": "explicit"
+    "source.formatAll.terraform": "explicit",
   },
   "editor.codeLensFontFamily": "'Hack Nerd Font', 'RobotoMono Nerd Font', 'Droid Sans Mono', monospace",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "prettier.prettier-vscode",
   "editor.fontFamily": "'Hack Nerd Font', 'RobotoMono Nerd Font', 'Droid Sans Mono', monospace",
   "editor.fontLigatures": true,
   "editor.fontVariations": true,
   "editor.fontWeight": "normal",
   "editor.formatOnSave": true,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "editor.rulers": [80, 120],
   "eslint.alwaysShowStatus": true,
   "eslint.codeActionsOnSave.options": {},
@@ -75,7 +96,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.selectedCompletionModel": "",
   "gitlens.advanced.messages": {
-    "suppressIntegrationRequestTimedOutWarning": true
+    "suppressIntegrationRequestTimedOutWarning": true,
   },
   "gitlens.plusFeatures.enabled": false,
   "go.formatTool": "gofumpt",
@@ -83,13 +104,13 @@
   "go.lintFlags": ["--fix"],
   "go.lintTool": "golangci-lint",
   "go.playground": {
-    "run": false
+    "run": false,
   },
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
   "jest.jestCommandLine": "npm run test:jest",
   "jest.nodeEnv": {
-    "NODE_OPTIONS": "--experimental-vm-modules"
+    "NODE_OPTIONS": "--experimental-vm-modules",
   },
   "makefile.configureOnOpen": true,
   "markdown.extension.preview.autoShowPreviewToSide": true,
@@ -122,12 +143,31 @@
       "terminal.ansiRed": "#A51822",
       "terminal.ansiWhite": "#D0CFCC",
       "terminal.ansiYellow": "#A2734C",
-      "terminal.background": "#262626"
-    }
+      "terminal.background": "#262626",
+    },
   },
-  "workbench.colorTheme": "Srcery",
-  "workbench.preferredDarkColorTheme": "Default Dark+",
+  "workbench.colorTheme": "Coop Dark",
+  "workbench.preferredDarkColorTheme": "Dark+",
   "workbench.preferredLightColorTheme": "Atom One Dark",
-  "workbench.settings.applyToAllProfiles": [],
-  "yaml.format.singleQuote": true
+  "workbench.settings.applyToAllProfiles": [
+  
+  ],
+  "yaml.format.singleQuote": true,
+  "chat.viewSessions.orientation": "stacked",
+  "terminal.integrated.initialHint": false,
+  "yaml.disableSchemaDetection": [
+    "**/.github/workflows/*.yml",
+    "**/.github/workflows/*.yaml",
+    "**/.gitea/workflows/*.yml",
+    "**/.gitea/workflows/*.yaml",
+    "**/.forgejo/workflows/*.yml",
+    "**/.forgejo/workflows/*.yaml"
+  ],
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilotcli:claude-sonnet-5",
+  "workbench.editor.empty.hint": "hidden",
+  "chat.agent.thinking.phrases": {
+    "mode": "append",
+    "phrases": []
+  },
 }
