@@ -57,7 +57,7 @@
 [color]
 	ui = always
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/ignore
 	attributesfile = ~/.gitattributes
 	editor = vim
 [color "branch"]
