@@ -43,3 +43,14 @@ addTimeZone(conn) // short, shallow, few args -> inline
 
 - **Do not add a `Co-authored-by: Copilot` trailer** (or any AI co-author
   trailer) to commit messages.
+
+## Git worktrees
+
+- Create worktrees inside the repo at `<repo-root>/.worktrees/<name>`, never
+  under `/tmp`: `/tmp` is wiped on reboot, taking uncommitted work with it.
+  `.worktrees/` is globally git-ignored.
+- Commit early and often on the worktree's branch (WIP commits are fine) so
+  work survives a crash or power loss.
+- After an unexpected reboot, run `git worktree prune` to drop stale entries.
+- When delegating work to a subagent in a worktree, tell it to use this
+  location too.

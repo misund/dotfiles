@@ -1,0 +1,4 @@
+**/.claude/settings.local.json
+
+# Git worktrees created inside a repo by agents (see ai/AGENTS.md)
+.worktrees/
