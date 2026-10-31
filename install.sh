@@ -65,6 +65,11 @@ if [[ ! -d stow-bin/bin/git-whoami ]]; then
     git clone https://github.com/petere/git-whoami stow-bin/bin/git-whoami
 fi
 
+# Pre-create the shared agent skills directory so Stow links individual skills
+# into it instead of folding ~/.agents into a single symlink to this repo.
+# That lets other sources live next to them.
+mkdir -p "$HOME/.agents/skills"
+
 # Stow all packages
 echo "Creating symlinks with Stow..."
 stow -v -t ~ -S */
