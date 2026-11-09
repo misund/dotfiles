@@ -255,7 +255,7 @@ else
 		then
 		 	echo "Installing nvm."
 			# renovate: datasource=github-releases depName=nvm-sh/nvm extractVersion=^v(?<version>.+)$
-			curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash;
+			curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash;
 			export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
 			set +u
 			[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
