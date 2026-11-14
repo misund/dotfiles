@@ -9,7 +9,6 @@ metadata:
     github-repo: https://github.com/github/gh-stack
     github-tree-sha: c95c8b5b4dd850f3fef007b304428f5684f2fb87
     version: 0.0.9
-name: gh-stack
 ---
 # gh-stack
 
