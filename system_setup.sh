@@ -126,7 +126,7 @@ install_tmux_plugins() {
 }
 
 install_opencode() {
-	curl -fsSL https://opencode.ai/install | bash
+	curl -fsSL https://opencode.ai/v2/install | bash
 }
 
 install_gh() {
