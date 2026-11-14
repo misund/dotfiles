@@ -5,22 +5,42 @@ description: >-
   execution: writing code and tests, then running the build, tests, and linter
   to verify. Not for open-ended design, exploration, or research.
 mode: subagent
-model: github-copilot/claude-sonnet-5.5
-variant: medium
+model: github-copilot/claude-sonnet-5.5#medium
 color: "#7986cb"
-permission:
-  read: allow
-  edit: allow
-  glob: allow
-  grep: allow
-  webfetch: allow
-  task: deny
-  bash:
-    "*": allow
-    "git push*": ask
-    "git rebase*": ask
-    "git reset*": ask
-    "gh pr create*": ask
+permissions:
+  - action: read
+    resource: "*"
+    effect: allow
+  - action: edit
+    resource: "*"
+    effect: allow
+  - action: glob
+    resource: "*"
+    effect: allow
+  - action: grep
+    resource: "*"
+    effect: allow
+  - action: webfetch
+    resource: "*"
+    effect: allow
+  - action: subagent
+    resource: "*"
+    effect: deny
+  - action: shell
+    resource: "*"
+    effect: allow
+  - action: shell
+    resource: "git push*"
+    effect: ask
+  - action: shell
+    resource: "git rebase*"
+    effect: ask
+  - action: shell
+    resource: "git reset*"
+    effect: ask
+  - action: shell
+    resource: "gh pr create*"
+    effect: ask
 ---
 
 You are an implementation agent. A primary agent hands you a plan that has
